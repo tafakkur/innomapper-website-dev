@@ -1,6 +1,6 @@
 let traveler_types = {
     venturer: {
-        top_details: `<img class="venturer" src="v1_files/Graphic_009.png">
+        top_details: `<img class="venturer" src="v1_files/graphic_009.png">
                         <div>
                             <h2 class="primary_color">You are a Venturer</h2>
                             <p class="primary_color">You lead with new ideas and embody innovation-readiness.</p>
@@ -34,7 +34,7 @@ let traveler_types = {
                     risks and welcome adventure. While you are open-minded, to
                     fellow travelers you can also appear rash and overly daring`,
         other_cards: {
-            card1: `<img src="v1_files/Graphic_010.png">
+            card1: `<img src="v1_files/graphic_010.png">
                     <h3>VOYAGERS</h3>
                     <ul>
                         <li><strong>Lead</strong> with influence.</li>
@@ -46,7 +46,7 @@ let traveler_types = {
                         <li><strong>Question the rules</strong>, encourage, facilitate or
                             empower radical change.</li>
                     </ul>`,
-            card2: `<img src="v1_files/Graphic_008.png">
+            card2: `<img src="v1_files/graphic_008.png">
                     <h3>DAYTRIPPERS</h3>
                     <ul>
                         <li><strong>Lead</strong> with trusted knowledge.</li>
@@ -58,7 +58,7 @@ let traveler_types = {
                         <li><strong>Are concerned about productivity</strong> and the
                             practical benefits of new ideas.</li>
                     </ul>`,
-            card3: `<img src="v1_files/Graphic_007.png">
+            card3: `<img src="v1_files/graphic_007.png">
                     <h3>TOURISTS</h3>
                     <ul>
                         <li><strong>Lead</strong> with a proven system.</li>
@@ -70,7 +70,7 @@ let traveler_types = {
                             ideas.</li>
                         <li><strong>See change as a sense of belonging.</strong> </li>
                     </ul>`,
-            card4: `<img src="v1_files/Graphic_011.png">
+            card4: `<img src="v1_files/graphic_011.png">
                     <h3>COMMUTERS</h3>
                     <ul>
                         <li><strong>Lead</strong> within existing systems.</li>
@@ -85,7 +85,7 @@ let traveler_types = {
     },
 
     tourist: {
-        top_details: `<img class="venturer" src="v1_files/Graphic_007.png">
+        top_details: `<img class="venturer" src="v1_files/graphic_007.png">
                         <div>
                             <h2 class="primary_color">You are a Tourist</h2>
                             <p class="primary_color">You lead with proven systems and operationalize innovation initiatives.</p>
@@ -112,7 +112,7 @@ let traveler_types = {
                         cautious about new ideas/tools until proven. As a result, you adopt or consume
                         new products, technologies or services only after seeing that most of the population has.`,
         other_cards: {
-            card1: `<img src="v1_files/Graphic_010.png">
+            card1: `<img src="v1_files/graphic_010.png">
                         <h3>VOYAGERS</h3>
                         <ul>
                             <li><strong>Lead</strong> with influence.</li>
@@ -124,7 +124,7 @@ let traveler_types = {
                             <li><strong>Question the rules</strong>, encourage, facilitate or
                                 empower radical change.</li>
                         </ul>`,
-            card2: `<img src="v1_files/Graphic_009.png">
+            card2: `<img src="v1_files/graphic_009.png">
                         <h3>VENTURERS</h3>
                         <ul>
                             <li><strong>Lead</strong> with new ideas and embody innovation-readiness.</li>
@@ -133,7 +133,7 @@ let traveler_types = {
                             refine or design new products, services or technologies.</li>
                             <li><strong>Can be too consumed</strong> by shiny new objects.</li>
                         </ul>`,
-            card3: `<img src="v1_files/Graphic_008.png">
+            card3: `<img src="v1_files/graphic_008.png">
                         <h3>DAYTRIPPERS</h3>
                         <ul>
                             <li><strong>Lead</strong> with trusted knowledge.</li>
@@ -145,7 +145,7 @@ let traveler_types = {
                             <li><strong>Are concerned about productivity</strong> and the
                                 practical benefits of new ideas.</li>
                         </ul>`,
-            card4: `<img src="v1_files/Graphic_011.png">
+            card4: `<img src="v1_files/graphic_011.png">
                         <h3>COMMUTERS</h3>
                         <ul>
                             <li><strong>Lead</strong> within existing systems.</li>
@@ -160,7 +160,7 @@ let traveler_types = {
     },
 
     voyager: {
-        top_details: `<img class="venturer" src="v1_files/Graphic_010.png">
+        top_details: `<img class="venturer" src="v1_files/graphic_010.png">
                             <div>
                                 <h2 class="primary_color">You are a Voyager</h2>
                                 <p class="primary_color">You lead with influence and you champion invention or innovation-related initiatives.</p>
@@ -196,7 +196,7 @@ let traveler_types = {
                             are open-minded, fellow travelers may see you as overly
                             concerned with your own reputation.`,
         other_cards: {
-            card1: `<img src="v1_files/Graphic_009.png">
+            card1: `<img src="v1_files/graphic_009.png">
                             <h3>VENTURERS</h3>
                             <ul>
                                 <li><strong>Lead</strong> with new ideas and embody innovation-readiness.</li>
@@ -205,7 +205,7 @@ let traveler_types = {
                                 refine or design new products, services or technologies.</li>
                                 <li><strong>Can be too consumed</strong> by shiny new objects.</li>
                             </ul>`,
-            card2: `<img src="v1_files/Graphic_008.png">
+            card2: `<img src="v1_files/graphic_008.png">
                             <h3>DAYTRIPPERS</h3>
                             <ul>
                                 <li><strong>Lead</strong> with trusted knowledge.</li>
@@ -217,7 +217,7 @@ let traveler_types = {
                                 <li><strong>Are concerned about productivity</strong> and the
                                     practical benefits of new ideas.</li>
                             </ul>`,
-            card3: `<img src="v1_files/Graphic_007.png">
+            card3: `<img src="v1_files/graphic_007.png">
                             <h3>TOURISTS</h3>
                             <ul>
                                 <li><strong>Lead</strong> with a proven system.</li>
@@ -229,7 +229,7 @@ let traveler_types = {
                                     ideas.</li>
                                 <li><strong>See change as a sense of belonging.</strong> </li>
                             </ul>`,
-            card4: `<img src="v1_files/Graphic_011.png">
+            card4: `<img src="v1_files/graphic_011.png">
                             <h3>COMMUTERS</h3>
                             <ul>
                                 <li><strong>Lead</strong> within existing systems.</li>
@@ -244,7 +244,7 @@ let traveler_types = {
     },
 
     daytripper: {
-        top_details: `<img class="venturer" src="v1_files/Graphic_008.png">
+        top_details: `<img class="venturer" src="v1_files/graphic_008.png">
                             <div>
                                 <h2 class="primary_color">You are a Daytripper</h2>
                                 <p class="primary_color">You lead with trusted knowledge and translate innovative ideas into action.</p>
@@ -278,7 +278,7 @@ let traveler_types = {
                             mass that ensures adoption of an idea or technology, just
                             before the typical employee.`,
         other_cards: {
-            card1: `<img src="v1_files/Graphic_010.png">
+            card1: `<img src="v1_files/graphic_010.png">
                      <h3>VOYAGERS</h3>
                      <ul>
                          <li><strong>Lead</strong> with influence.</li>
@@ -290,7 +290,7 @@ let traveler_types = {
                          <li><strong>Question the rules</strong>, encourage, facilitate or
                              empower radical change.</li>
                      </ul>`,
-            card2: `<img src="v1_files/Graphic_009.png">
+            card2: `<img src="v1_files/graphic_009.png">
                             <h3>VENTURERS</h3>
                             <ul>
                                 <li><strong>Lead</strong> with new ideas and embody innovation-readiness.</li>
@@ -299,7 +299,7 @@ let traveler_types = {
                                 refine or design new products, services or technologies.</li>
                                 <li><strong>Can be too consumed</strong> by shiny new objects.</li>
                             </ul>`,
-            card3: `<img src="v1_files/Graphic_007.png">
+            card3: `<img src="v1_files/graphic_007.png">
                             <h3>TOURISTS</h3>
                             <ul>
                                 <li><strong>Lead</strong> with a proven system.</li>
@@ -311,7 +311,7 @@ let traveler_types = {
                                     ideas.</li>
                                 <li><strong>See change as a sense of belonging.</strong> </li>
                             </ul>`,
-            card4: `<img src="v1_files/Graphic_011.png">
+            card4: `<img src="v1_files/graphic_011.png">
                             <h3>COMMUTERS</h3>
                             <ul>
                                 <li><strong>Lead</strong> within existing systems.</li>
@@ -326,7 +326,7 @@ let traveler_types = {
     },
 
     commuter: {
-        top_details: `<img class="venturer" src="v1_files/Graphic_011.png">
+        top_details: `<img class="venturer" src="v1_files/graphic_011.png">
                             <div>
                                 <h2 class="primary_color">You are a Commuter</h2>
                                 <p class="primary_color">You lead within existing systems and challenge innovation initiatives.</p>
@@ -358,7 +358,7 @@ let traveler_types = {
                             technology is enforced, you will gradually accept it and then
                             become a believer in its value.`,
         other_cards: {
-            card1: `<img src="v1_files/Graphic_010.png">
+            card1: `<img src="v1_files/graphic_010.png">
                      <h3>VOYAGERS</h3>
                      <ul>
                          <li><strong>Lead</strong> with influence.</li>
@@ -370,7 +370,7 @@ let traveler_types = {
                          <li><strong>Question the rules</strong>, encourage, facilitate or
                              empower radical change.</li>
                      </ul>`,
-            card2: `<img src="v1_files/Graphic_009.png">
+            card2: `<img src="v1_files/graphic_009.png">
                             <h3>VENTURERS</h3>
                             <ul>
                                 <li><strong>Lead</strong> with new ideas and embody innovation-readiness.</li>
@@ -379,7 +379,7 @@ let traveler_types = {
                                 refine or design new products, services or technologies.</li>
                                 <li><strong>Can be too consumed</strong> by shiny new objects.</li>
                             </ul>`,
-            card3: `<img src="v1_files/Graphic_008.png">
+            card3: `<img src="v1_files/graphic_008.png">
                             <h3>DAYTRIPPERS</h3>
                             <ul>
                                 <li><strong>Lead</strong> with trusted knowledge.</li>
@@ -391,7 +391,7 @@ let traveler_types = {
                                 <li><strong>Are concerned about productivity</strong> and the
                                     practical benefits of new ideas.</li>
                             </ul>`,
-            card4: `<img src="v1_files/Graphic_007.png">
+            card4: `<img src="v1_files/graphic_007.png">
                             <h3>TOURISTS</h3>
                             <ul>
                                 <li><strong>Lead</strong> with a proven system.</li>
