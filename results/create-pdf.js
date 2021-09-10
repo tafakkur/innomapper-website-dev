@@ -1518,11 +1518,12 @@ async function marker_chk() {
 function generateViewPDF() {
 	try {
 		makePDFContent();
-		document.querySelector("#loading strong").innerText =
-			"Your customized Innomapper(beta) report is ready.\nPlease click the button to download it.\n\n\n";
+		document.querySelector("#loading span").innerHTML =
+			"Your customized <b><i>inno</i>mapper(beta)</b> report is ready.<br>Please click the button to download it.<br><br><br>";
+		document.querySelector("#loading span").style.fontFamily = "sans-serif";
 		document.querySelector(".loaders").outerHTML = "";
 		document
-			.querySelector("#loading strong")
+			.querySelector("#loading span")
 			.insertAdjacentHTML(
 				"afterend",
 				'<button class="btn btn-primary" id="gen_pdf" onclick="doc.save(\'Report.pdf\');" style="margin: 0 auto" > Download PDF Report</button>'
