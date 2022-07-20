@@ -22,25 +22,16 @@ let situational_img = "";
 let educational_img = "";
 let interpersonal_img = "";
 let experimental_img = "";
-let openness_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_6rJTKwq93wGX9R4",
-	agreeableness_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4U7HCI2Vy6VPOBg",
-	emotional_stability_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_724GoVU3rEpUf30",
-	conscientiousness_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_2sDE22Ab1RcDoJo",
-	extraversion_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_e4zt1gJ3FPkekDk",
-	experimental_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4UCD9HqPDLsOQYu",
+let openness_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_6rJTKwq93wGX9R4",
+	agreeableness_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4U7HCI2Vy6VPOBg",
+	emotional_stability_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_724GoVU3rEpUf30",
+	conscientiousness_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_2sDE22Ab1RcDoJo",
+	extraversion_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_e4zt1gJ3FPkekDk",
+	experimental_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4UCD9HqPDLsOQYu",
 	cultural_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_9YatLvhvJJyYxcW",
-	situational_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_8AF97djqTCPumyO",
-	educational_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_3UCI759PkH36mr4",
-	interpersonal_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4Gu8XAUVZXmRjzE";
+	situational_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_8AF97djqTCPumyO",
+	educational_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_3UCI759PkH36mr4",
+	interpersonal_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4Gu8XAUVZXmRjzE";
 
 let type_img, my_pdf, gen_pdf, upload_pdf;
 let first_graph;
@@ -117,29 +108,25 @@ function makePDFContent() {
 			primary_clr = voyager_clr;
 			primary_img = voyager_img;
 			firstpage_heading = "You are a Voyager";
-			firstpage_description =
-				"You lead with influence and you champion invention or innovation-related initiatives.";
+			firstpage_description = "You lead with influence and you champion invention or innovation-related initiatives.";
 			break;
 		case "daytripper":
 			primary_clr = daytripper_clr;
 			primary_img = daytripper_img;
 			firstpage_heading = "You are a Daytripper";
-			firstpage_description =
-				"You lead with trusted knowledge and translate innovative ideas into action.";
+			firstpage_description = "You lead with trusted knowledge and translate innovative ideas into action.";
 			break;
 		case "tourist":
 			primary_clr = tourist_clr;
 			primary_img = tourist_img;
 			firstpage_heading = "You are a Tourist";
-			firstpage_description =
-				"You lead with proven systems and operationalize innovation initiatives.";
+			firstpage_description = "You lead with proven systems and operationalize innovation initiatives.";
 			break;
 		case "commuter":
 			primary_clr = commuter_clr;
 			primary_img = commuter_img;
 			firstpage_heading = "You are a Commuter";
-			firstpage_description =
-				"You lead within existing systems and challenge innovation initiatives.";
+			firstpage_description = "You lead within existing systems and challenge innovation initiatives.";
 			break;
 		default:
 			console.log("Personality type doesn't match.");
@@ -161,22 +148,12 @@ function makePDFContent() {
 		doc.setTextColor("white");
 		doc.setFontType("medium");
 		doc.setFontSize(9.5);
-		doc.text(
-			`Innovation is a journey and a destination, full of uncertainty, ambiguity and discomfort.`,
-			110,
-			110,
-			{
-				maxWidth: 452,
-			}
-		);
-		doc.text(
-			`Your personal profile reflects your current readiness to embark on this journey.`,
-			130,
-			123,
-			{
-				maxWidth: 452,
-			}
-		);
+		doc.text(`Innovation is a journey and a destination, full of uncertainty, ambiguity and discomfort.`, 110, 110, {
+			maxWidth: 452,
+		});
+		doc.text(`Your personal profile reflects your current readiness to embark on this journey.`, 130, 123, {
+			maxWidth: 452,
+		});
 	}
 
 	header();
@@ -570,11 +547,7 @@ function makePDFContent() {
 		doc.setFontSize(7);
 		doc.text(`mapper (beta).`, 132, 737);
 		doc.setFontType("normal");
-		doc.text(
-			` If you have any questions about the test and/or your results, write to us at:`,
-			184,
-			737
-		);
+		doc.text(` If you have any questions about the test and/or your results, write to us at:`, 184, 737);
 		doc.setFontSize(7);
 		doc.setFont("Inter", "bold"); // bolditalic
 		doc.text("businessdesign@rotman.utoronto.ca", 432, 737);
@@ -621,9 +594,9 @@ function makePDFContent() {
 
 	if (type === "venturer") {
 		doc.setFontSize(8);
-		doc.text(`(see below), Venturers are in`, 440, 252);
+		doc.text(`(see below), Venturers `, 440, 252);
 		doc.text(
-			`the minority, typically representing 2.5% of the population. Often described as an ‘innovator’, at your best, you take risks and welcome adventure. While you are open-minded, to fellow travelers you can also appear rash and overly daring.`,
+			`are in the minority and are often described as \'innovators\'. At your best, you take risks and welcome adventure. While you are open-minded, to fellow travelers you may also appear rash and overly daring.`,
 			316,
 			262,
 			{
@@ -636,7 +609,7 @@ function makePDFContent() {
 		doc.setFontSize(8);
 		doc.text(`(see below), Voyagers `, 440, 252);
 		doc.text(
-			`represent 13.5% of the population. Often described as an ‘early adopter’, at your best you question the rules, encourage, facilitate or empower radical change. While you are open-minded, fellow travelers may see you as overly concerned with your own reputation.`,
+			`are often described as \'early adopters\'. At your best, you question the rules and encourage, facilitate or empower radical change. While you are open-minded, fellow travelers may see you as overly concerned with your own reputation.`,
 			316,
 			262,
 			{
@@ -647,9 +620,9 @@ function makePDFContent() {
 
 	if (type === "daytripper") {
 		doc.setFontSize(8);
-		doc.text(`(see below), Daytrippers`, 440, 252);
+		doc.text(`(see below), Daytrippers `, 440, 252);
 		doc.text(
-			`represent 34% of the population. Often described as an ‘early majority’, you are essential to translating ideas between leaders and late adopters. You are part of the critical mass that ensures adoption of an idea or technology, just before the typical employee.`,
+			`are essential to translating ideas between leaders and late adopters. You are a part of the critical mass that ensures adoption of an idea or technology, just before the typical employee.`,
 			316,
 			262,
 			{
@@ -660,9 +633,9 @@ function makePDFContent() {
 
 	if (type === "tourist") {
 		doc.setFontSize(8);
-		doc.text(`(see below), Tourists represent`, 440, 252);
+		doc.text(`(see below), Tourists `, 440, 252);
 		doc.text(
-			`34% of the population. You are essential for questioning shiny new ideas and ensuring compliance and operational efficiency. You tend to be cautious about new ideas/tools until proven. As a result, you adopt or consume new products, technologies or services only after seeing that most of the population has. `,
+			`are essential for questioning shiny new ideas and ensuring compliance and operational efficiency. You tend to be cautious about new ideas/tools until proven. As a result, you adopt or consume new products, technologies or services only after seeing that most of the population has.`,
 			316,
 			262,
 			{
@@ -673,9 +646,9 @@ function makePDFContent() {
 
 	if (type === "commuter") {
 		doc.setFontSize(8);
-		doc.text(`(see below), Commuters`, 440, 252);
+		doc.text(`(see below), Commuters `, 440, 252);
 		doc.text(
-			`represent 16% of the population. You demand proof that a new idea or tool is better or useful. Once the new product or technology is enforced, you will gradually accept it and then become a believer in its value. `,
+			`demand proof that a new idea or tool is better or useful. Once the new product or technology is enforced, you will gradually accept it and then become a believer in its value.`,
 			316,
 			262,
 			{
