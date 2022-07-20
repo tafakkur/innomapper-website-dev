@@ -1354,17 +1354,22 @@ function makePDFContent() {
 	doc.text(`>80%`, 330, 440);
 
 	doc.setFontSize(7);
-	doc.setFontType("bold");
-	doc.text(`Score Ranges`, 45, 428);
+	// doc.setFontType("bold");
+	// doc.text(`Score Ranges`, 45, 428);
 	doc.setFontType("medium");
 	doc.setFontSize(6.5);
-	doc.text(`Scores above 80% are considered 'high' and below 65% are considered 'low'.`, 45, 440, {
-		maxWidth: 130,
-	});
+	doc.text(
+		`Your traits represent your default state or your comfort zone that you easily resort to in most situations.`,
+		45,
+		428,
+		{
+			maxWidth: 130,
+		}
+	);
 	doc.setFontSize(7);
 	doc.setFontType("medium");
 	doc.text(
-		`Innovativeness is strongly correlated with scores for openness above 80% and scores above 65% for agreeableness and emotional stability.`,
+		`Innovativeness is strongly correlated with higher openness and emotional stability, and medium agreeableness.`,
 		375,
 		425,
 		{
@@ -1395,7 +1400,7 @@ function makePDFContent() {
 	doc.text(`Adaptability Quotient`, 48, 512);
 
 	doc.setFontSize(8.5);
-	doc.text(`Willingness & Ability to Adapt`, 375, 507);
+	doc.text(`Willingness & Ability to Adapt when`, 375, 507);
 
 	doc.setFontSize(7);
 	doc.text(`Measures`, 375, 530);
@@ -1415,31 +1420,31 @@ function makePDFContent() {
 	doc.setFontSize(6.5);
 	doc.setTextColor(openness_clr);
 	doc.text(`EXPERIMENTAL ADAPTABILITY`, 70, 548);
-	doc.text(`Solve atypical, ill-defined, complex problems`, 375, 548);
+	doc.text(`Solving atypical, ill-defined & complex problems`, 375, 548);
 
 	doc.addImage(cultural_img, "PNG", 42, 560, 25, 22, "cultural", "SLOW");
 	doc.setFontSize(6.5);
 	doc.setTextColor(agreeableness_clr);
 	doc.text(`CULTURAL ADAPTABILITY`, 70, 571);
-	doc.text(`Explore & interact with new & diverse cultures`, 375, 571);
+	doc.text(`Exploring & interacting with new & diverse cultures`, 375, 571);
 
 	doc.addImage(situational_img, "PNG", 42, 583, 25, 22, "situational", "SLOW");
 	doc.setFontSize(6.5);
 	doc.setTextColor(emotional_stability);
 	doc.text(`SITUATIONAL ADAPTABILITY`, 70, 594);
-	doc.text(`Manage reactions to uncertain or crisis situations`, 375, 594);
+	doc.text(`Managing reactions to uncertain or crisis situations`, 375, 594);
 
 	doc.addImage(educational_img, "PNG", 42, 607, 25, 22, "education", "SLOW");
 	doc.setFontSize(6.5);
 	doc.setTextColor(conscientiousness_clr);
 	doc.text(`EDUCATIONAL ADAPTABILITY`, 70, 617);
-	doc.text(`Learn new tasks, technologies & procedures`, 375, 617);
+	doc.text(`Learn new tasks, technologies and procedures`, 375, 617);
 
 	doc.addImage(interpersonal_img, "PNG", 42, 631, 25, 22, "interpersonal", "SLOW");
 	doc.setFontSize(6.5);
 	doc.setTextColor(extraversion_clr);
 	doc.text(`INTERPERSONAL ADAPTABILITY`, 70, 643);
-	doc.text(`Adjust behaviour while working with others`, 375, 643);
+	doc.text(`Adjusting behaviour while working with others`, 375, 643);
 
 	doc.setDrawColor(footer_copyrights);
 	doc.setLineDash([0.3]);
@@ -1459,13 +1464,18 @@ function makePDFContent() {
 	doc.text(`>90%`, 330, 685);
 
 	doc.setFontSize(7);
-	doc.setFontType("bold");
-	doc.text(`Score Ranges`, 45, 670);
-	doc.setFontSize(6.5);
+	// doc.setFontType("bold");
+	// doc.text(`Score Ranges`, 45, 670);
+	// doc.setFontSize(6.5);
 	doc.setFontType("medium");
-	doc.text(`Scores above 90% are considered 'high' and below 65% are considered 'low'.`, 45, 682, {
-		maxWidth: 130,
-	});
+	doc.text(
+		`Identify your areas of greatest and least adaptability. Reflect on how it relates to the way you react to different types of situations.`,
+		45,
+		670,
+		{
+			maxWidth: 130,
+		}
+	);
 
 	doc.setFontSize(7);
 	doc.setFontType("medium");
