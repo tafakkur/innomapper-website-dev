@@ -1284,8 +1284,8 @@ function makePDFContent() {
 	doc.setFontSize(8.5);
 	doc.text(`Willingness & Ability to Adapt when`, 375, 265);
 
-	doc.setFontSize(7);
-	doc.text(`Measures`, 375, 288);
+	// doc.setFontSize(7);
+	// doc.text(`Measures`, 375, 288);
 
 	doc.addImage(experimental_img, "PNG", 42, 295, 25, 22, "2PageOpenness", "SLOW");
 	doc.setFontSize(7);
@@ -1388,22 +1388,46 @@ function makePDFContent() {
 	// doc.text(`100`, 345, 485);
 
 	// Second Graph
+	//Big 5
+	const labels = ["OPENNESS", "AGREEABLENESS", "EMOTIONAL STABILITY", "CONSCIENTIOUSNESS", "EXTRAVERSION"];
+	const b5_images = [openness_img, agreeableness_img, emotional_stability_img, conscientiousness_img, extraversion_img];
+	const y_pos = {
+		last_line: 700,
+		graph_title: 495,
+	};
+	// "arrow_positions": [544.5, 567.5, 592.5, 615.5, 639.5],
+
+	const lab_start = 530;
+	const lab_diff = 35;
+	const arrow_positions = [];
+
+	labels.forEach((item, index) => {
+		const start_pos = lab_start + lab_diff * index;
+		y_pos[item] = start_pos;
+		arrow_positions.push(start_pos - 3.5);
+	});
+
 	doc.setTextColor(traits_heading);
 	doc.setFontSize(11);
 	doc.setFontType("bold");
-	doc.text(`Big 5 Personality Traits`, 48, 512);
+	doc.text(`Big 5 Personality Traits`, 48, y_pos.graph_title);
 
-	doc.setFontSize(8.5);
-	doc.text(`Innovativeness Scale & Indicators`, 250, 507);
+	// doc.setFontSize(8.5);
+	// doc.text(`Innovativeness Scale & Indicators`, 250, 507);
 
 	doc.setDrawColor(footer_copyrights);
 
-	//Big 5
-
 	my_colors.forEach((item, index) => {
-		const arrow_height = 2;
-		const arrow_length = 375;
-		const y_positions = [544.5, 567.5, 592.5, 615.5, 639.5];
+		const arrow_height = 4;
+		const arrow_length = 320;
+		// const y_positions = [544.5, 567.5, 592.5, 615.5, 639.5];
+		const y_positions = arrow_positions;
+		const line_y_start = y_positions[index];
+		const line_x_start = 210;
+		const line_x_end = line_x_start + arrow_length;
+		const line_y_end = line_y_start + arrow_height;
+		const x_offset = 20;
+		const y_offset = 15;
 		const arrow_texts = [
 			["cautious", "conventional", "curious", "creative"],
 			["anxious", "moody", "secure", "confident"],
@@ -1411,14 +1435,11 @@ function makePDFContent() {
 			["easy-going", "careless", "structured", "organized"],
 			["self-reliant", "reserved", "outgoing", "expressive"],
 		];
-		const offset = 5;
+
 		doc.setDrawColor(item);
 		doc.setFillColor(item);
 		doc.setTextColor(item);
-		const line_y_start = y_positions[index];
-		const line_x_start = 170;
-		const line_x_end = line_x_start + arrow_length;
-		const line_y_end = line_y_start + arrow_height;
+
 		doc.rect(line_x_start, line_y_start, arrow_length, arrow_height, "F");
 		doc.triangle(
 			line_x_start,
@@ -1438,12 +1459,34 @@ function makePDFContent() {
 			line_y_end + 3,
 			"F"
 		);
-		doc.setFontSize(4);
 
-		doc.text(arrow_texts[index][0], line_x_start - 2 * offset, line_y_start - offset);
-		doc.text(arrow_texts[index][1], line_x_start - 2 * offset, line_y_end + offset + 2);
-		doc.text(arrow_texts[index][2], line_x_end + 2 * offset, line_y_start - offset, { align: "right" });
-		doc.text(arrow_texts[index][3], line_x_end + 2 * offset, line_y_end + offset + 2, { align: "right" });
+		// Write Label Text
+		doc.setFontType("bold");
+		doc.setFontSize(8);
+		doc.text(labels[index], 70, y_pos[labels[index]], {
+			align: "left",
+			baseline: "middle",
+		});
+
+		// Write Extra Text on Arrows
+		doc.setFontType("medium");
+		doc.setFontSize(10);
+		doc.text(arrow_texts[index][0], line_x_start - x_offset, line_y_start - y_offset, {
+			align: "left",
+			baseline: "top",
+		});
+		doc.text(arrow_texts[index][1], line_x_start - x_offset, line_y_end + y_offset, {
+			align: "left",
+			baseline: "bottom",
+		});
+		doc.text(arrow_texts[index][2], line_x_end + x_offset, line_y_start - y_offset, {
+			align: "right",
+			baseline: "top",
+		});
+		doc.text(arrow_texts[index][3], line_x_end + x_offset, line_y_end + y_offset, {
+			align: "right",
+			baseline: "bottom",
+		});
 
 		// Plot values
 
@@ -1455,39 +1498,21 @@ function makePDFContent() {
 		plot_start = plot_start > 90 ? 90 : plot_start;
 		doc.roundedRect(
 			line_x_start + (plot_start * arrow_length) / 100,
-			line_y_start - 3,
+			line_y_start - arrow_height ,
 			20,
-			arrow_height + 6,
+			arrow_height * 3,
 			arrow_height / 4,
 			arrow_height / 4,
 			"F"
 		);
+		// Add label image
+		doc.setTextColor("white");
+		doc.setFontSize(20);
+		doc.setFontType("bold");
+		doc.rect(42, y_pos[labels[index]] - 12, 20, 20, "F");
+		doc.text(["O", "A", "S", "C", "E"][index], 45, y_pos[labels[index]] - 1, { align: "left", baseline: "middle" });
+		// doc.addImage(b5_images[index], "PNG", 42, y_pos[labels[index]] - 11, 22, 22, "", "SLOW");
 	});
-
-	doc.addImage(openness_img, "PNG", 42, 537, 22, 22, "experi", "SLOW");
-	doc.setFontSize(6.5);
-	doc.setTextColor(openness_clr);
-	doc.text(`OPENNESS`, 70, 548);
-
-	doc.addImage(agreeableness_img, "PNG", 42, 560, 22, 22, "cultural", "SLOW");
-	doc.setFontSize(6.5);
-	doc.setTextColor(agreeableness_clr);
-	doc.text(`AGREEABLENESS`, 70, 571);
-
-	doc.addImage(emotional_stability_img, "PNG", 42, 583, 22, 22, "situational", "SLOW");
-	doc.setFontSize(6.5);
-	doc.setTextColor(emotional_stability);
-	doc.text(`EMOTIONAL STABILITY`, 70, 596);
-
-	doc.addImage(conscientiousness_img, "PNG", 42, 607, 22, 22, "education", "SLOW");
-	doc.setFontSize(6.5);
-	doc.setTextColor(conscientiousness_clr);
-	doc.text(`CONSCIENTIOUSNESS`, 70, 619);
-
-	doc.addImage(extraversion_img, "PNG", 42, 631, 22, 22, "interpersonal", "SLOW");
-	doc.setFontSize(6.5);
-	doc.setTextColor(extraversion_clr);
-	doc.text(`EXTRAVERSION`, 70, 643);
 
 	doc.setTextColor(footer_copyrights);
 	doc.setFontSize(7);
@@ -1498,9 +1523,9 @@ function makePDFContent() {
 	doc.text(
 		`Identify your areas of greatest and least adaptability. Reflect on how it relates to the way you react to different types of situations.`,
 		45,
-		670,
+		y_pos.last_line,
 		{
-			maxWidth: 130,
+			maxWidth: 200,
 		}
 	);
 
@@ -1508,14 +1533,14 @@ function makePDFContent() {
 	doc.setFontType("medium");
 	doc.text(
 		`Innovativeness is strongly correlated with a balanced score across all adaptability measures and with scores above 90% for experimental and cultural adaptability.`,
-		400,
-		670,
+		370,
+		y_pos.last_line,
 		{
-			maxWidth: 140,
+			maxWidth: 200,
 		}
 	);
 
-	// For Chrome, Edge and Opera
+	/* // For Chrome, Edge and Opera
 	let y2 = 531,
 		h2 = 127;
 	// For Firefox
@@ -1524,7 +1549,7 @@ function makePDFContent() {
 		h2 = 232;
 	}
 	// doc.addImage(big_5_graph, "PNG", 150, y2, 400, h2, "graph1", "NONE");
-	// doc.addImage(adapt_qt_graph, "PMG", 180, y2, 180, h2, "graph2", "NONE");
+	// doc.addImage(adapt_qt_graph, "PMG", 180, y2, 180, h2, "graph2", "NONE"); */
 
 	footer();
 	// document.getElementById("pdf-wrapper").style.display = "block";
@@ -1543,12 +1568,11 @@ function generateViewPDF() {
 			"Your customized <b><i>inno</i>mapper(beta)</b> report is ready.<br>Please click the button to download it.<br><br><br>";
 		document.querySelector("#loading span").style.fontFamily = "sans-serif";
 		document.querySelector(".loaders").outerHTML = "";
-		document
-			.querySelector("#loading span")
-			.insertAdjacentHTML(
-				"afterend",
-				'<button class="btn btn-primary" id="gen_pdf" onclick="doc.save(\'Report.pdf\');" style="margin: 0 auto" > Download PDF Report</button>'
-			);
+		document.querySelector("#loading span").insertAdjacentHTML(
+			"afterend",
+			/* 				'<button class="btn btn-primary" id="gen_pdf" onclick="doc.save(\'Report.pdf\');" style="margin: 0 auto" > Download PDF Report</button>' + */
+			'<button class="btn btn-primary" id="gen_pdf" onclick="window.open(doc.output(\'bloburl\'))" style="margin: 0 auto" > Download PDF Report</button>'
+		);
 		let update_message = JSON.stringify({
 			type: "done",
 		});
