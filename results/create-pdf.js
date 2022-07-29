@@ -34,8 +34,8 @@ let openness_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM
 	interpersonal_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4Gu8XAUVZXmRjzE";
 
 let type_img, my_pdf, gen_pdf, upload_pdf;
-let first_graph;
-let second_graph;
+let big_5_graph;
+let adapt_qt_graph;
 
 createDataUrls();
 
@@ -1268,63 +1268,54 @@ function makePDFContent() {
 	doc.setDrawColor(vertical_graph_line);
 	doc.setLineDash([2, 1]);
 	doc.setLineWidth(0.5);
-	doc.line(183.5, 252, 183, 720);
-	doc.line(218, 252, 218, 720);
-	doc.line(252, 252, 252, 720);
-	doc.line(287, 252, 287, 720);
-	doc.line(322, 252, 322, 720);
-	doc.line(357, 252, 357, 720);
+	doc.line(183 + 5, 252, 183 + 5, 472);
+	doc.line(218 + 5, 252, 218 + 5, 472);
+	doc.line(252 + 5, 252, 252 + 5, 472);
+	doc.line(287 + 5, 252, 287 + 5, 472);
+	doc.line(322 + 5, 252, 322 + 5, 472);
+	doc.line(357 + 5, 252, 357 + 5, 472);
 
 	// First Graph
 	doc.setTextColor(traits_heading);
 	doc.setFontSize(11);
 	doc.setFontType("bold");
-	doc.text(`Big 5 Personality Traits`, 48, 270);
+	doc.text(`Adaptability Quotient`, 48, 270);
 
 	doc.setFontSize(8.5);
-	doc.text(`Innovativeness Scale & Indicators`, 375, 265);
+	doc.text(`Willingness & Ability to Adapt when`, 375, 265);
 
 	doc.setFontSize(7);
-	doc.text(`Lower score`, 375, 288);
-	doc.text(`Higher score`, 465, 288);
+	doc.text(`Measures`, 375, 288);
 
-	doc.setFontSize(7);
-	doc.setTextColor(extraversion_clr);
-	doc.text(`Introspective`, 375, 400);
-	doc.text(`Sociable & assertive`, 465, 400);
-
-	doc.addImage(openness_img, "PNG", 45, 295, 23, 22, "2PageOpenness", "SLOW");
+	doc.addImage(experimental_img, "PNG", 42, 295, 25, 22, "2PageOpenness", "SLOW");
 	doc.setFontSize(7);
 	doc.setTextColor(openness_clr);
-	doc.text(`OPENNESS`, 73, 305);
-	doc.text(`Prefer routine`, 375, 303);
-	doc.text(`Curious & creative`, 465, 303);
+	doc.text(`EXPERIMENTAL ADAPTABILITY`, 70, 305);
+	doc.text(`Solving atypical, ill-defined & complex problems`, 375, 303);
 
-	doc.addImage(agreeableness_img, "PNG", 45.5, 318, 22, 22, "TwoAgreeableness", "SLOW");
+	doc.addImage(cultural_img, "PNG", 42, 318, 25, 22, "TwoAgreeableness", "SLOW");
 	doc.setFontSize(7);
 	doc.setTextColor(agreeableness_clr);
-	doc.text(`AGREEABLENESS`, 73, 330);
-	doc.text(`Egocentric`, 375, 327);
-	doc.text(`Patient & polite`, 465, 327);
+	doc.text(`CULTURAL ADAPTABILITY`, 70, 330);
+	doc.text(`Exploring & interacting with new & diverse cultures`, 375, 327);
 
-	doc.addImage(emotional_stability_img, "PNG", 46, 341, 21, 22, "emotional", "SLOW");
+	doc.addImage(situational_img, "PNG", 42, 341, 25, 22, "emotional", "SLOW");
 	doc.setFontSize(7);
 	doc.setTextColor(emotional_stability);
-	doc.text(`EMOTIONAL STABILITY`, 73, 353);
-	doc.text(`Insecure`, 375, 352);
-	doc.text(`Confident`, 465, 352);
+	doc.text(`SITUATIONAL ADAPTABILITY`, 70, 353);
+	doc.text(`Managing reactions to uncertain or crisis situations`, 375, 352);
 
-	doc.addImage(conscientiousness_img, "PNG", 46.5, 365, 20.5, 22, "conscientious", "SLOW");
+	doc.addImage(educational_img, "PNG", 42, 365, 25, 22, "conscientious", "SLOW");
 	doc.setFontSize(7);
 	doc.setTextColor(conscientiousness_clr);
-	doc.text(`CONSCIENTIOUSNESS`, 73, 375);
-	doc.text(`Impulsive`, 375, 375);
-	doc.text(`Goal-oriented & organized`, 465, 375);
+	doc.text(`EDUCATIONAL ADAPTABILITY`, 70, 375);
+	doc.text(`Learn new tasks, technologies and procedures`, 375, 375);
 
-	doc.addImage(extraversion_img, "PNG", 46.5, 388, 20.5, 22, "extraversion", "SLOW");
+	doc.addImage(interpersonal_img, "PNG", 42, 388, 25, 22, "extraversion", "SLOW");
 	doc.setFontSize(7);
 	doc.setTextColor(extraversion_clr);
-	doc.text(`EXTRAVERSION`, 73, 399);
+	doc.text(`INTERPERSONAL ADAPTABILITY`, 70, 399);
+	doc.text(`Adjusting behaviour while working with others`, 375, 400);
 
 	doc.setDrawColor(footer_copyrights);
 	// For Chrome, Edge and Opera
@@ -1332,26 +1323,29 @@ function makePDFContent() {
 		h1 = 180;
 	// For Firefox
 	if (navigator.userAgent.indexOf("Firefox") > -1) {
-		(y1 = 260), (h1 = 231);
+		y1 = 260;
+		h1 = 228;
 	}
-	doc.addImage(first_graph, "PNG", 180, y1, 180, h1, "graph1", "NONE");
+
+	// doc.addImage(big_5_graph, "PNG", 170, y1, 400, h1, "graph1", "NONE");
+	doc.addImage(adapt_qt_graph, "PNG", 185, y1, 180, h1, "graph2", "NONE");
 
 	doc.setDrawColor(footer_copyrights);
 	doc.setLineDash([0.3]);
-	doc.line(182, 425, 286, 425);
-	doc.line(325, 425, 352, 425);
-	doc.circle(286, 425, 2);
-	doc.circle(325, 425, 2);
+	doc.line(182 + 5, 425, 286 + 5, 425);
+	doc.line(325 + 5, 425, 352 + 5, 425);
+	doc.circle(286 + 5, 425, 2);
+	doc.circle(325 + 5, 425, 2);
 
 	doc.setFillColor(footer_copyrights);
-	doc.triangle(187, 423, 182, 425, 187, 427, "DF");
-	doc.triangle(353, 423, 358, 425, 353, 427, "DF");
+	doc.triangle(187 + 5, 423, 182 + 5, 425, 187 + 5, 427, "DF");
+	doc.triangle(353 + 5, 423, 358 + 5, 425, 353 + 5, 427, "DF");
 
 	doc.setFontSize(7);
 	doc.setFontType("normal");
 	doc.setTextColor(footer_copyrights);
-	doc.text(`<65%`, 225, 440);
-	doc.text(`>80%`, 330, 440);
+	doc.text(`<65%`, 225 + 5, 440);
+	doc.text(`>80%`, 330 + 5, 440);
 
 	doc.setFontSize(7);
 	// doc.setFontType("bold");
@@ -1359,7 +1353,7 @@ function makePDFContent() {
 	doc.setFontType("medium");
 	doc.setFontSize(6.5);
 	doc.text(
-		`Your traits represent your default state or your comfort zone that you easily resort to in most situations.`,
+		`Identify your areas of greatest and least adaptability. Reflect on how it relates to the way you react to different types of situations.`,
 		45,
 		428,
 		{
@@ -1369,7 +1363,7 @@ function makePDFContent() {
 	doc.setFontSize(7);
 	doc.setFontType("medium");
 	doc.text(
-		`Innovativeness is strongly correlated with higher openness and emotional stability, and medium agreeableness.`,
+		`Innovativeness is strongly correlated with a balanced score across all adaptability measures and with scores above 90% for experimental and cultural adaptability.`,
 		375,
 		425,
 		{
@@ -1377,92 +1371,125 @@ function makePDFContent() {
 		}
 	);
 
-	doc.setFillColor(footer_copyrights);
-	doc.rect(35, 472, 542, 18, "F");
+	doc.setFillColor(primary_clr);
+	doc.rect(35, 472, 542, 3, "F");
 
-	doc.setTextColor("white");
-	doc.setFontSize(8);
-	doc.setFontType("bold");
-	doc.text(`PERCENT (%)`, 100, 484);
-	doc.setFontSize(11);
-	doc.setFontType("bold");
-	doc.text(`0`, 178, 485);
-	doc.text(`20`, 210, 485);
-	doc.text(`40`, 245, 485);
-	doc.text(`60`, 280, 485);
-	doc.text(`80`, 315, 485);
-	doc.text(`100`, 345, 485);
+	// doc.setTextColor("white");
+	// doc.setFontSize(8);
+	// doc.setFontType("bold");
+	// doc.text(`PERCENT (%)`, 100, 484);
+	// doc.setFontSize(11);
+	// doc.setFontType("bold");
+	// doc.text(`0`, 178, 485);
+	// doc.text(`20`, 210, 485);
+	// doc.text(`40`, 245, 485);
+	// doc.text(`60`, 280, 485);
+	// doc.text(`80`, 315, 485);
+	// doc.text(`100`, 345, 485);
 
 	// Second Graph
 	doc.setTextColor(traits_heading);
 	doc.setFontSize(11);
 	doc.setFontType("bold");
-	doc.text(`Adaptability Quotient`, 48, 512);
+	doc.text(`Big 5 Personality Traits`, 48, 512);
 
 	doc.setFontSize(8.5);
-	doc.text(`Willingness & Ability to Adapt when`, 375, 507);
-
-	doc.setFontSize(7);
-	doc.text(`Measures`, 375, 530);
+	doc.text(`Innovativeness Scale & Indicators`, 250, 507);
 
 	doc.setDrawColor(footer_copyrights);
-	// For Chrome, Edge and Opera
-	let y2 = 528,
-		h2 = 180;
-	// For Firefox
-	if (navigator.userAgent.indexOf("Firefox") > -1) {
-		(y2 = 502), (h2 = 232);
-	}
-	doc.addImage(second_graph, "PMG", 180, y2, 180, h2, "graph2", "NONE");
 
-	//Adaptability
-	doc.addImage(experimental_img, "PNG", 42, 537, 25, 22, "experi", "SLOW");
+	//Big 5
+
+	my_colors.forEach((item, index) => {
+		const arrow_height = 2;
+		const arrow_length = 375;
+		const y_positions = [544.5, 567.5, 592.5, 615.5, 639.5];
+		const arrow_texts = [
+			["cautious", "conventional", "curious", "creative"],
+			["anxious", "moody", "secure", "confident"],
+			["competitive", "withdrawn", "cooperative", "optimistic"],
+			["easy-going", "careless", "structured", "organized"],
+			["self-reliant", "reserved", "outgoing", "expressive"],
+		];
+		const offset = 5;
+		doc.setDrawColor(item);
+		doc.setFillColor(item);
+		doc.setTextColor(item);
+		const line_y_start = y_positions[index];
+		const line_x_start = 170;
+		const line_x_end = line_x_start + arrow_length;
+		const line_y_end = line_y_start + arrow_height;
+		doc.rect(line_x_start, line_y_start, arrow_length, arrow_height, "F");
+		doc.triangle(
+			line_x_start,
+			line_y_start - 3,
+			line_x_start - 5,
+			(line_y_start + line_y_end) / 2,
+			line_x_start,
+			line_y_end + 3,
+			"F"
+		);
+		doc.triangle(
+			line_x_end - 2,
+			line_y_start - 3,
+			line_x_end - 2 + 5,
+			(line_y_start + line_y_end) / 2,
+			line_x_end - 2,
+			line_y_end + 3,
+			"F"
+		);
+		doc.setFontSize(4);
+
+		doc.text(arrow_texts[index][0], line_x_start - 2 * offset, line_y_start - offset);
+		doc.text(arrow_texts[index][1], line_x_start - 2 * offset, line_y_end + offset + 2);
+		doc.text(arrow_texts[index][2], line_x_end + 2 * offset, line_y_start - offset, { align: "right" });
+		doc.text(arrow_texts[index][3], line_x_end + 2 * offset, line_y_end + offset + 2, { align: "right" });
+
+		// Plot values
+
+		let trait_value = trait_way[index] * 10;
+		let plot_start = trait_value;
+		if (trait_value <= 5) {
+			plot_start = 1.5;
+		}
+		plot_start = plot_start > 90 ? 90 : plot_start;
+		doc.roundedRect(
+			line_x_start + (plot_start * arrow_length) / 100,
+			line_y_start - 3,
+			20,
+			arrow_height + 6,
+			arrow_height / 4,
+			arrow_height / 4,
+			"F"
+		);
+	});
+
+	doc.addImage(openness_img, "PNG", 42, 537, 22, 22, "experi", "SLOW");
 	doc.setFontSize(6.5);
 	doc.setTextColor(openness_clr);
-	doc.text(`EXPERIMENTAL ADAPTABILITY`, 70, 548);
-	doc.text(`Solving atypical, ill-defined & complex problems`, 375, 548);
+	doc.text(`OPENNESS`, 70, 548);
 
-	doc.addImage(cultural_img, "PNG", 42, 560, 25, 22, "cultural", "SLOW");
+	doc.addImage(agreeableness_img, "PNG", 42, 560, 22, 22, "cultural", "SLOW");
 	doc.setFontSize(6.5);
 	doc.setTextColor(agreeableness_clr);
-	doc.text(`CULTURAL ADAPTABILITY`, 70, 571);
-	doc.text(`Exploring & interacting with new & diverse cultures`, 375, 571);
+	doc.text(`AGREEABLENESS`, 70, 571);
 
-	doc.addImage(situational_img, "PNG", 42, 583, 25, 22, "situational", "SLOW");
+	doc.addImage(emotional_stability_img, "PNG", 42, 583, 22, 22, "situational", "SLOW");
 	doc.setFontSize(6.5);
 	doc.setTextColor(emotional_stability);
-	doc.text(`SITUATIONAL ADAPTABILITY`, 70, 594);
-	doc.text(`Managing reactions to uncertain or crisis situations`, 375, 594);
+	doc.text(`EMOTIONAL STABILITY`, 70, 596);
 
-	doc.addImage(educational_img, "PNG", 42, 607, 25, 22, "education", "SLOW");
+	doc.addImage(conscientiousness_img, "PNG", 42, 607, 22, 22, "education", "SLOW");
 	doc.setFontSize(6.5);
 	doc.setTextColor(conscientiousness_clr);
-	doc.text(`EDUCATIONAL ADAPTABILITY`, 70, 617);
-	doc.text(`Learn new tasks, technologies and procedures`, 375, 617);
+	doc.text(`CONSCIENTIOUSNESS`, 70, 619);
 
-	doc.addImage(interpersonal_img, "PNG", 42, 631, 25, 22, "interpersonal", "SLOW");
+	doc.addImage(extraversion_img, "PNG", 42, 631, 22, 22, "interpersonal", "SLOW");
 	doc.setFontSize(6.5);
 	doc.setTextColor(extraversion_clr);
-	doc.text(`INTERPERSONAL ADAPTABILITY`, 70, 643);
-	doc.text(`Adjusting behaviour while working with others`, 375, 643);
+	doc.text(`EXTRAVERSION`, 70, 643);
 
-	doc.setDrawColor(footer_copyrights);
-	doc.setLineDash([0.3]);
-	doc.line(182, 670, 286, 670);
-	doc.line(341, 670, 354, 670);
-	doc.circle(286, 670, 2);
-	doc.circle(341, 670, 2);
-
-	doc.setFillColor(footer_copyrights);
-	doc.triangle(187, 668, 182, 670, 187, 672, "DF");
-	doc.triangle(351, 668, 356, 670, 351, 672, "DF");
-
-	doc.setFontSize(7);
-	doc.setFontType("normal");
 	doc.setTextColor(footer_copyrights);
-	doc.text(`<65%`, 225, 685);
-	doc.text(`>90%`, 330, 685);
-
 	doc.setFontSize(7);
 	// doc.setFontType("bold");
 	// doc.text(`Score Ranges`, 45, 670);
@@ -1481,12 +1508,23 @@ function makePDFContent() {
 	doc.setFontType("medium");
 	doc.text(
 		`Innovativeness is strongly correlated with a balanced score across all adaptability measures and with scores above 90% for experimental and cultural adaptability.`,
-		375,
+		400,
 		670,
 		{
 			maxWidth: 140,
 		}
 	);
+
+	// For Chrome, Edge and Opera
+	let y2 = 531,
+		h2 = 127;
+	// For Firefox
+	if (navigator.userAgent.indexOf("Firefox") > -1) {
+		y2 = 502;
+		h2 = 232;
+	}
+	// doc.addImage(big_5_graph, "PNG", 150, y2, 400, h2, "graph1", "NONE");
+	// doc.addImage(adapt_qt_graph, "PMG", 180, y2, 180, h2, "graph2", "NONE");
 
 	footer();
 	// document.getElementById("pdf-wrapper").style.display = "block";
@@ -1548,10 +1586,10 @@ function createDataUriFromSvg() {
 		}
 		svgString2Image(item.getSVGForExport(), wd, ht, "png", function (pngData) {
 			if (index === 0) {
-				first_graph = pngData;
+				big_5_graph = pngData;
 			}
 			if (index === 1) {
-				second_graph = pngData;
+				adapt_qt_graph = pngData;
 			}
 		});
 	});
