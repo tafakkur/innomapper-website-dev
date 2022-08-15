@@ -22,29 +22,20 @@ let situational_img = "";
 let educational_img = "";
 let interpersonal_img = "";
 let experimental_img = "";
-let openness_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_6rJTKwq93wGX9R4",
-	agreeableness_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4U7HCI2Vy6VPOBg",
-	emotional_stability_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_724GoVU3rEpUf30",
-	conscientiousness_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_2sDE22Ab1RcDoJo",
-	extraversion_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_e4zt1gJ3FPkekDk",
-	experimental_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4UCD9HqPDLsOQYu",
+let openness_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_6rJTKwq93wGX9R4",
+	agreeableness_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4U7HCI2Vy6VPOBg",
+	emotional_stability_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_724GoVU3rEpUf30",
+	conscientiousness_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_2sDE22Ab1RcDoJo",
+	extraversion_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_e4zt1gJ3FPkekDk",
+	experimental_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4UCD9HqPDLsOQYu",
 	cultural_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_9YatLvhvJJyYxcW",
-	situational_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_8AF97djqTCPumyO",
-	educational_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_3UCI759PkH36mr4",
-	interpersonal_url =
-		"https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4Gu8XAUVZXmRjzE";
+	situational_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_8AF97djqTCPumyO",
+	educational_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_3UCI759PkH36mr4",
+	interpersonal_url = "https://rotman.az1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4Gu8XAUVZXmRjzE";
 
 let type_img, my_pdf, gen_pdf, upload_pdf;
-let first_graph;
-let second_graph;
+let big_5_graph;
+let adapt_qt_graph;
 
 createDataUrls();
 
@@ -117,29 +108,25 @@ function makePDFContent() {
 			primary_clr = voyager_clr;
 			primary_img = voyager_img;
 			firstpage_heading = "You are a Voyager";
-			firstpage_description =
-				"You lead with influence and you champion invention or innovation-related initiatives.";
+			firstpage_description = "You lead with influence and you champion invention or innovation-related initiatives.";
 			break;
 		case "daytripper":
 			primary_clr = daytripper_clr;
 			primary_img = daytripper_img;
 			firstpage_heading = "You are a Daytripper";
-			firstpage_description =
-				"You lead with trusted knowledge and translate innovative ideas into action.";
+			firstpage_description = "You lead with trusted knowledge and translate innovative ideas into action.";
 			break;
 		case "tourist":
 			primary_clr = tourist_clr;
 			primary_img = tourist_img;
 			firstpage_heading = "You are a Tourist";
-			firstpage_description =
-				"You lead with proven systems and operationalize innovation initiatives.";
+			firstpage_description = "You lead with proven systems and operationalize innovation initiatives.";
 			break;
 		case "commuter":
 			primary_clr = commuter_clr;
 			primary_img = commuter_img;
 			firstpage_heading = "You are a Commuter";
-			firstpage_description =
-				"You lead within existing systems and challenge innovation initiatives.";
+			firstpage_description = "You lead within existing systems and challenge innovation initiatives.";
 			break;
 		default:
 			console.log("Personality type doesn't match.");
@@ -162,17 +149,9 @@ function makePDFContent() {
 		doc.setFontType("medium");
 		doc.setFontSize(9.5);
 		doc.text(
-			`Innovation is a journey and a destination, full of uncertainty, ambiguity and discomfort.`,
+			`Innovation is a journey and a destination. Discover where you are and innovate your way forward.`,
+			95,
 			110,
-			110,
-			{
-				maxWidth: 452,
-			}
-		);
-		doc.text(
-			`Your personal profile reflects your current readiness to embark on this journey.`,
-			130,
-			123,
 			{
 				maxWidth: 452,
 			}
@@ -570,11 +549,7 @@ function makePDFContent() {
 		doc.setFontSize(7);
 		doc.text(`mapper (beta).`, 132, 737);
 		doc.setFontType("normal");
-		doc.text(
-			` If you have any questions about the test and/or your results, write to us at:`,
-			184,
-			737
-		);
+		doc.text(` If you have any questions about the test and/or your results, write to us at:`, 184, 737);
 		doc.setFontSize(7);
 		doc.setFont("Inter", "bold"); // bolditalic
 		doc.text("businessdesign@rotman.utoronto.ca", 432, 737);
@@ -621,9 +596,9 @@ function makePDFContent() {
 
 	if (type === "venturer") {
 		doc.setFontSize(8);
-		doc.text(`(see below), Venturers are in`, 440, 252);
+		doc.text(`(see below), Venturers `, 440, 252);
 		doc.text(
-			`the minority, typically representing 2.5% of the population. Often described as an ‘innovator’, at your best, you take risks and welcome adventure. While you are open-minded, to fellow travelers you can also appear rash and overly daring.`,
+			`are in the minority and are often described as \'innovators\'. At your best, you take risks and welcome adventure. While you are open-minded, to fellow travelers you may also appear rash and overly daring.`,
 			316,
 			262,
 			{
@@ -636,7 +611,7 @@ function makePDFContent() {
 		doc.setFontSize(8);
 		doc.text(`(see below), Voyagers `, 440, 252);
 		doc.text(
-			`represent 13.5% of the population. Often described as an ‘early adopter’, at your best you question the rules, encourage, facilitate or empower radical change. While you are open-minded, fellow travelers may see you as overly concerned with your own reputation.`,
+			`are often described as \'early adopters\'. At your best, you question the rules and encourage, facilitate or empower radical change. While you are open-minded, fellow travelers may see you as overly concerned with your own reputation.`,
 			316,
 			262,
 			{
@@ -647,9 +622,9 @@ function makePDFContent() {
 
 	if (type === "daytripper") {
 		doc.setFontSize(8);
-		doc.text(`(see below), Daytrippers`, 440, 252);
+		doc.text(`(see below), Daytrippers `, 440, 252);
 		doc.text(
-			`represent 34% of the population. Often described as an ‘early majority’, you are essential to translating ideas between leaders and late adopters. You are part of the critical mass that ensures adoption of an idea or technology, just before the typical employee.`,
+			`are essential to translating ideas between leaders and late adopters. You are a part of the critical mass that ensures adoption of an idea or technology, just before the typical employee.`,
 			316,
 			262,
 			{
@@ -660,9 +635,9 @@ function makePDFContent() {
 
 	if (type === "tourist") {
 		doc.setFontSize(8);
-		doc.text(`(see below), Tourists represent`, 440, 252);
+		doc.text(`(see below), Tourists `, 440, 252);
 		doc.text(
-			`34% of the population. You are essential for questioning shiny new ideas and ensuring compliance and operational efficiency. You tend to be cautious about new ideas/tools until proven. As a result, you adopt or consume new products, technologies or services only after seeing that most of the population has. `,
+			`are essential for questioning shiny new ideas and ensuring compliance and operational efficiency. You tend to be cautious about new ideas/tools until proven. As a result, you adopt or consume new products, technologies or services only after seeing that most of the population has.`,
 			316,
 			262,
 			{
@@ -673,9 +648,9 @@ function makePDFContent() {
 
 	if (type === "commuter") {
 		doc.setFontSize(8);
-		doc.text(`(see below), Commuters`, 440, 252);
+		doc.text(`(see below), Commuters `, 440, 252);
 		doc.text(
-			`represent 16% of the population. You demand proof that a new idea or tool is better or useful. Once the new product or technology is enforced, you will gradually accept it and then become a believer in its value. `,
+			`demand proof that a new idea or tool is better or useful. Once the new product or technology is enforced, you will gradually accept it and then become a believer in its value.`,
 			316,
 			262,
 			{
@@ -1295,63 +1270,54 @@ function makePDFContent() {
 	doc.setDrawColor(vertical_graph_line);
 	doc.setLineDash([2, 1]);
 	doc.setLineWidth(0.5);
-	doc.line(183.5, 252, 183, 720);
-	doc.line(218, 252, 218, 720);
-	doc.line(252, 252, 252, 720);
-	doc.line(287, 252, 287, 720);
-	doc.line(322, 252, 322, 720);
-	doc.line(357, 252, 357, 720);
+	doc.line(183 + 5, 252, 183 + 5, 472);
+	doc.line(218 + 5, 252, 218 + 5, 472);
+	doc.line(252 + 5, 252, 252 + 5, 472);
+	doc.line(287 + 5, 252, 287 + 5, 472);
+	doc.line(322 + 5, 252, 322 + 5, 472);
+	doc.line(357 + 5, 252, 357 + 5, 472);
 
 	// First Graph
 	doc.setTextColor(traits_heading);
 	doc.setFontSize(11);
 	doc.setFontType("bold");
-	doc.text(`Big 5 Personality Traits`, 48, 270);
+	doc.text(`Adaptability Quotient`, 48, 270);
 
 	doc.setFontSize(8.5);
-	doc.text(`Innovativeness Scale & Indicators`, 375, 265);
+	doc.text(`Willingness & Ability to Adapt when`, 375, 275);
 
-	doc.setFontSize(7);
-	doc.text(`Lower score`, 375, 288);
-	doc.text(`Higher score`, 465, 288);
+	// doc.setFontSize(7);
+	// doc.text(`Measures`, 375, 288);
 
-	doc.setFontSize(7);
-	doc.setTextColor(extraversion_clr);
-	doc.text(`Introspective`, 375, 400);
-	doc.text(`Sociable & assertive`, 465, 400);
-
-	doc.addImage(openness_img, "PNG", 45, 295, 23, 22, "2PageOpenness", "SLOW");
+	doc.addImage(experimental_img, "PNG", 42, 295, 25, 22, "2PageOpenness", "SLOW");
 	doc.setFontSize(7);
 	doc.setTextColor(openness_clr);
-	doc.text(`OPENNESS`, 73, 305);
-	doc.text(`Prefer routine`, 375, 303);
-	doc.text(`Curious & creative`, 465, 303);
+	doc.text(`EXPERIMENTAL ADAPTABILITY`, 70, 305);
+	doc.text(`Solving atypical, ill-defined & complex problems`, 375, 303);
 
-	doc.addImage(agreeableness_img, "PNG", 45.5, 318, 22, 22, "TwoAgreeableness", "SLOW");
+	doc.addImage(cultural_img, "PNG", 42, 318, 25, 22, "TwoAgreeableness", "SLOW");
 	doc.setFontSize(7);
 	doc.setTextColor(agreeableness_clr);
-	doc.text(`AGREEABLENESS`, 73, 330);
-	doc.text(`Egocentric`, 375, 327);
-	doc.text(`Patient & polite`, 465, 327);
+	doc.text(`CULTURAL ADAPTABILITY`, 70, 330);
+	doc.text(`Exploring & interacting with new & diverse cultures`, 375, 327);
 
-	doc.addImage(emotional_stability_img, "PNG", 46, 341, 21, 22, "emotional", "SLOW");
+	doc.addImage(situational_img, "PNG", 42, 341, 25, 22, "emotional", "SLOW");
 	doc.setFontSize(7);
 	doc.setTextColor(emotional_stability);
-	doc.text(`EMOTIONAL STABILITY`, 73, 353);
-	doc.text(`Insecure`, 375, 352);
-	doc.text(`Confident`, 465, 352);
+	doc.text(`SITUATIONAL ADAPTABILITY`, 70, 353);
+	doc.text(`Managing reactions to uncertain or crisis situations`, 375, 352);
 
-	doc.addImage(conscientiousness_img, "PNG", 46.5, 365, 20.5, 22, "conscientious", "SLOW");
+	doc.addImage(educational_img, "PNG", 42, 365, 25, 22, "conscientious", "SLOW");
 	doc.setFontSize(7);
 	doc.setTextColor(conscientiousness_clr);
-	doc.text(`CONSCIENTIOUSNESS`, 73, 375);
-	doc.text(`Impulsive`, 375, 375);
-	doc.text(`Goal-oriented & organized`, 465, 375);
+	doc.text(`EDUCATIONAL ADAPTABILITY`, 70, 375);
+	doc.text(`Learning new tasks, technologies and procedures`, 375, 375);
 
-	doc.addImage(extraversion_img, "PNG", 46.5, 388, 20.5, 22, "extraversion", "SLOW");
+	doc.addImage(interpersonal_img, "PNG", 42, 388, 25, 22, "extraversion", "SLOW");
 	doc.setFontSize(7);
 	doc.setTextColor(extraversion_clr);
-	doc.text(`EXTRAVERSION`, 73, 399);
+	doc.text(`INTERPERSONAL ADAPTABILITY`, 70, 399);
+	doc.text(`Adjusting behaviour while working with others`, 375, 400);
 
 	doc.setDrawColor(footer_copyrights);
 	// For Chrome, Edge and Opera
@@ -1359,151 +1325,236 @@ function makePDFContent() {
 		h1 = 180;
 	// For Firefox
 	if (navigator.userAgent.indexOf("Firefox") > -1) {
-		(y1 = 260), (h1 = 231);
+		y1 = 260;
+		h1 = 228;
 	}
-	doc.addImage(first_graph, "PNG", 180, y1, 180, h1, "graph1", "NONE");
+
+	// doc.addImage(big_5_graph, "PNG", 170, y1, 400, h1, "graph1", "NONE");
+	doc.addImage(adapt_qt_graph, "PNG", 185, y1, 180, h1, "graph2", "NONE");
 
 	doc.setDrawColor(footer_copyrights);
 	doc.setLineDash([0.3]);
-	doc.line(182, 425, 286, 425);
-	doc.line(325, 425, 352, 425);
-	doc.circle(286, 425, 2);
-	doc.circle(325, 425, 2);
+	doc.line(182 + 5, 425, 286 + 5, 425);
+	doc.line(325 + 5, 425, 352 + 5, 425);
+	doc.circle(286 + 5, 425, 2);
+	doc.circle(325 + 5, 425, 2);
 
 	doc.setFillColor(footer_copyrights);
-	doc.triangle(187, 423, 182, 425, 187, 427, "DF");
-	doc.triangle(353, 423, 358, 425, 353, 427, "DF");
+	doc.triangle(187 + 5, 423, 182 + 5, 425, 187 + 5, 427, "DF");
+	doc.triangle(353 + 5, 423, 358 + 5, 425, 353 + 5, 427, "DF");
 
 	doc.setFontSize(7);
 	doc.setFontType("normal");
 	doc.setTextColor(footer_copyrights);
-	doc.text(`<65%`, 225, 440);
-	doc.text(`>80%`, 330, 440);
+	doc.text(`<65%`, 225 + 5, 440);
+	doc.text(`>80%`, 330 + 5, 440);
 
 	doc.setFontSize(7);
-	doc.setFontType("bold");
-	doc.text(`Score Ranges`, 45, 428);
+	// doc.setFontType("bold");
+	// doc.text(`Score Ranges`, 45, 428);
 	doc.setFontType("medium");
 	doc.setFontSize(6.5);
-	doc.text(`Scores above 80% are considered 'high' and below 65% are considered 'low'.`, 45, 440, {
-		maxWidth: 130,
-	});
+	doc.text(
+		`Identify your areas of greatest and least adaptability. Reflect on how it relates to the way you react to different types of situations.`,
+		45,
+		428,
+		{
+			maxWidth: 130,
+		}
+	);
 	doc.setFontSize(7);
 	doc.setFontType("medium");
 	doc.text(
-		`Innovativeness is strongly correlated with scores for openness above 80% and scores above 65% for agreeableness and emotional stability.`,
-		375,
+		`Innovativeness is strongly correlated with a balanced score across all adaptability measures and with scores above 80% for experimental and cultural adaptability.`,
+		550,
 		425,
 		{
-			maxWidth: 140,
+			maxWidth: 150,
+			align: "right",
 		}
 	);
 
-	doc.setFillColor(footer_copyrights);
-	doc.rect(35, 472, 542, 18, "F");
+	doc.setFillColor(primary_clr);
+	doc.rect(35, 472, 542, 3, "F");
 
-	doc.setTextColor("white");
-	doc.setFontSize(8);
-	doc.setFontType("bold");
-	doc.text(`PERCENT (%)`, 100, 484);
-	doc.setFontSize(11);
-	doc.setFontType("bold");
-	doc.text(`0`, 178, 485);
-	doc.text(`20`, 210, 485);
-	doc.text(`40`, 245, 485);
-	doc.text(`60`, 280, 485);
-	doc.text(`80`, 315, 485);
-	doc.text(`100`, 345, 485);
+	// doc.setTextColor("white");
+	// doc.setFontSize(8);
+	// doc.setFontType("bold");
+	// doc.text(`PERCENT (%)`, 100, 484);
+	// doc.setFontSize(11);
+	// doc.setFontType("bold");
+	// doc.text(`0`, 178, 485);
+	// doc.text(`20`, 210, 485);
+	// doc.text(`40`, 245, 485);
+	// doc.text(`60`, 280, 485);
+	// doc.text(`80`, 315, 485);
+	// doc.text(`100`, 345, 485);
 
 	// Second Graph
+	//Big 5
+	const labels = ["OPENNESS", "EMOTIONAL STABILITY", "AGREEABLENESS", "CONSCIENTIOUSNESS", "EXTRAVERSION"];
+	const big5_colours = [openness_clr, emotional_stability, agreeableness_clr, conscientiousness_clr, extraversion_clr];
+	const b5_images = [openness_img, agreeableness_img, emotional_stability_img, conscientiousness_img, extraversion_img];
+	const y_pos = {
+		last_line: 704,
+		graph_title: 495,
+	};
+	// "arrow_positions": [544.5, 567.5, 592.5, 615.5, 639.5],
+
+	const lab_start = 530;
+	const lab_diff = 35;
+	const arrow_positions = [];
+
+	labels.forEach((item, index) => {
+		const start_pos = lab_start + lab_diff * index;
+		y_pos[item] = start_pos - 2;
+		arrow_positions.push(start_pos - 3.5);
+	});
+
 	doc.setTextColor(traits_heading);
 	doc.setFontSize(11);
 	doc.setFontType("bold");
-	doc.text(`Adaptability Quotient`, 48, 512);
+	doc.text(`Big 5 Personality Traits`, 48, y_pos.graph_title);
 
-	doc.setFontSize(8.5);
-	doc.text(`Willingness & Ability to Adapt`, 375, 507);
-
-	doc.setFontSize(7);
-	doc.text(`Measures`, 375, 530);
+	// doc.setFontSize(8.5);
+	// doc.text(`Innovativeness Scale & Indicators`, 250, 507);
 
 	doc.setDrawColor(footer_copyrights);
-	// For Chrome, Edge and Opera
-	let y2 = 528,
-		h2 = 180;
-	// For Firefox
-	if (navigator.userAgent.indexOf("Firefox") > -1) {
-		(y2 = 502), (h2 = 232);
-	}
-	doc.addImage(second_graph, "PMG", 180, y2, 180, h2, "graph2", "NONE");
 
-	//Adaptability
-	doc.addImage(experimental_img, "PNG", 42, 537, 25, 22, "experi", "SLOW");
-	doc.setFontSize(6.5);
-	doc.setTextColor(openness_clr);
-	doc.text(`EXPERIMENTAL ADAPTABILITY`, 70, 548);
-	doc.text(`Solve atypical, ill-defined, complex problems`, 375, 548);
+	big5_colours.forEach((item, index) => {
+		const arrow_height = 2;
+		const arrow_length = 320;
+		// const y_positions = [544.5, 567.5, 592.5, 615.5, 639.5];
+		const y_positions = arrow_positions;
+		const line_y_start = y_positions[index];
+		const line_x_start = 210;
+		const line_x_end = line_x_start + arrow_length;
+		const line_y_end = line_y_start + arrow_height;
+		const x_offset = 20;
+		const y_offset = 12;
+		const arrow_texts = [
+			["cautious", "conventional", "curious", "creative"],
+			["anxious", "moody", "secure", "confident"],
+			["competitive", "withdrawn", "cooperative", "optimistic"],
+			["easy-going", "careless", "structured", "organized"],
+			["self-reliant", "reserved", "outgoing", "expressive"],
+		];
 
-	doc.addImage(cultural_img, "PNG", 42, 560, 25, 22, "cultural", "SLOW");
-	doc.setFontSize(6.5);
-	doc.setTextColor(agreeableness_clr);
-	doc.text(`CULTURAL ADAPTABILITY`, 70, 571);
-	doc.text(`Explore & interact with new & diverse cultures`, 375, 571);
+		doc.setDrawColor(item);
+		doc.setFillColor(item);
+		doc.setTextColor(item);
 
-	doc.addImage(situational_img, "PNG", 42, 583, 25, 22, "situational", "SLOW");
-	doc.setFontSize(6.5);
-	doc.setTextColor(emotional_stability);
-	doc.text(`SITUATIONAL ADAPTABILITY`, 70, 594);
-	doc.text(`Manage reactions to uncertain or crisis situations`, 375, 594);
+		doc.rect(line_x_start, line_y_start, arrow_length, arrow_height, "F");
+		doc.triangle(
+			line_x_start,
+			line_y_start - 3,
+			line_x_start - 5,
+			(line_y_start + line_y_end) / 2,
+			line_x_start,
+			line_y_end + 3,
+			"F"
+		);
+		doc.triangle(
+			line_x_end - 2,
+			line_y_start - 3,
+			line_x_end - 2 + 5,
+			(line_y_start + line_y_end) / 2,
+			line_x_end - 2,
+			line_y_end + 3,
+			"F"
+		);
 
-	doc.addImage(educational_img, "PNG", 42, 607, 25, 22, "education", "SLOW");
-	doc.setFontSize(6.5);
-	doc.setTextColor(conscientiousness_clr);
-	doc.text(`EDUCATIONAL ADAPTABILITY`, 70, 617);
-	doc.text(`Learn new tasks, technologies & procedures`, 375, 617);
+		// Write Label Text
+		doc.setFontType("bold");
+		doc.setFontSize(8);
+		doc.text(labels[index], 70, y_pos[labels[index]], {
+			align: "left",
+			baseline: "middle",
+		});
 
-	doc.addImage(interpersonal_img, "PNG", 42, 631, 25, 22, "interpersonal", "SLOW");
-	doc.setFontSize(6.5);
-	doc.setTextColor(extraversion_clr);
-	doc.text(`INTERPERSONAL ADAPTABILITY`, 70, 643);
-	doc.text(`Adjust behaviour while working with others`, 375, 643);
+		// Write Extra Text on Arrows
+		doc.setFontType("medium");
+		doc.setFontSize(8);
+		doc.text(arrow_texts[index][0], line_x_start - x_offset, line_y_start - y_offset, {
+			align: "left",
+			baseline: "top",
+		});
+		doc.text(arrow_texts[index][1], line_x_start - x_offset, line_y_end + y_offset, {
+			align: "left",
+			baseline: "bottom",
+		});
+		doc.text(arrow_texts[index][2], line_x_end + x_offset, line_y_start - y_offset, {
+			align: "right",
+			baseline: "top",
+		});
+		doc.text(arrow_texts[index][3], line_x_end + x_offset, line_y_end + y_offset, {
+			align: "right",
+			baseline: "bottom",
+		});
 
-	doc.setDrawColor(footer_copyrights);
-	doc.setLineDash([0.3]);
-	doc.line(182, 670, 286, 670);
-	doc.line(341, 670, 354, 670);
-	doc.circle(286, 670, 2);
-	doc.circle(341, 670, 2);
+		// Plot values
 
-	doc.setFillColor(footer_copyrights);
-	doc.triangle(187, 668, 182, 670, 187, 672, "DF");
-	doc.triangle(351, 668, 356, 670, 351, 672, "DF");
-
-	doc.setFontSize(7);
-	doc.setFontType("normal");
-	doc.setTextColor(footer_copyrights);
-	doc.text(`<65%`, 225, 685);
-	doc.text(`>90%`, 330, 685);
-
-	doc.setFontSize(7);
-	doc.setFontType("bold");
-	doc.text(`Score Ranges`, 45, 670);
-	doc.setFontSize(6.5);
-	doc.setFontType("medium");
-	doc.text(`Scores above 90% are considered 'high' and below 65% are considered 'low'.`, 45, 682, {
-		maxWidth: 130,
+		let trait_value = trait_way[index] * 10;
+		let plot_start = trait_value;
+		if (trait_value <= 5) {
+			plot_start = 1.5;
+		}
+		plot_start = plot_start > 90 ? 90 : plot_start;
+		doc.roundedRect(
+			line_x_start + (plot_start * arrow_length) / 100,
+			line_y_start - arrow_height,
+			20,
+			arrow_height * 3,
+			arrow_height / 4,
+			arrow_height / 4,
+			"F"
+		);
+		// Add label image
+		doc.rect(48, y_pos[labels[index]] - 8, 16.8, 16.8, "F");
+		doc.setTextColor("white");
+		doc.setFontType("bold");
+		doc.setFontSize(16);
+		doc.text(["O", "S", "A", "C", "E"][index], 56.4, y_pos[labels[index]] + 8, { align: "center", baseline: "bottom" });
+		// doc.addImage(b5_images[index], "PNG", 42, y_pos[labels[index]] - 11, 22, 22, "", "SLOW");
 	});
+
+	doc.setTextColor(footer_copyrights);
+	doc.setFontSize(7);
+	// doc.setFontType("bold");
+	// doc.text(`Score Ranges`, 45, 670);
+	// doc.setFontSize(6.5);
+	doc.setFontType("medium");
+	doc.text(
+		`Your traits represent your default state or your comfort zone that you easily resort to in most situations.`,
+		45,
+		y_pos.last_line,
+		{
+			maxWidth: 230,
+		}
+	);
 
 	doc.setFontSize(7);
 	doc.setFontType("medium");
 	doc.text(
-		`Innovativeness is strongly correlated with a balanced score across all adaptability measures and with scores above 90% for experimental and cultural adaptability.`,
-		375,
-		670,
+		`Innovativeness is strongly correlated with high levels of openness and balanced emotional stability and agreeableness.`,
+		550,
+		y_pos.last_line,
 		{
-			maxWidth: 140,
+			maxWidth: 220,
+			align: "right",
 		}
 	);
+
+	/* // For Chrome, Edge and Opera
+	let y2 = 531,
+		h2 = 127;
+	// For Firefox
+	if (navigator.userAgent.indexOf("Firefox") > -1) {
+		y2 = 502;
+		h2 = 232;
+	}
+	// doc.addImage(big_5_graph, "PNG", 150, y2, 400, h2, "graph1", "NONE");
+	// doc.addImage(adapt_qt_graph, "PMG", 180, y2, 180, h2, "graph2", "NONE"); */
 
 	footer();
 	// document.getElementById("pdf-wrapper").style.display = "block";
@@ -1522,18 +1573,20 @@ function generateViewPDF() {
 			"Your customized <b><i>inno</i>mapper(beta)</b> report is ready.<br>Please click the button to download it.<br><br><br>";
 		document.querySelector("#loading span").style.fontFamily = "sans-serif";
 		document.querySelector(".loaders").outerHTML = "";
-		document
-			.querySelector("#loading span")
-			.insertAdjacentHTML(
-				"afterend",
-				'<button class="btn btn-primary" id="gen_pdf" onclick="doc.save(\'Report.pdf\');" style="margin: 0 auto" > Download PDF Report</button>'
-			);
+		document.querySelector("#loading span").insertAdjacentHTML(
+			"afterend",
+			'<button class="btn btn-primary" id="gen_pdf" onclick="doc.save(\'Report.pdf\');" style="margin: 0 auto" > Download PDF Report</button>'
+			// '<button class="btn btn-primary" id="gen_pdf" onclick="window.open(doc.output(\'bloburl\'))" style="margin: 0 auto" > Download PDF Report</button>'
+		);
 		let update_message = JSON.stringify({
 			type: "done",
 		});
 		parent.postMessage(update_message, "*");
 	} catch (error) {
 		console.log(attempts++);
+		if (attempts > 5) {
+			window.location.reload();
+		}
 		setTimeout(() => {
 			generateViewPDF();
 		}, 500);
@@ -1561,14 +1614,15 @@ function createDataUriFromSvg() {
 			ht = 540;
 		// For Firefox
 		if (navigator.userAgent.indexOf("Firefox") > -1) {
-			(wd = 462), (ht = 360);
+			wd = 462;
+			ht = 360;
 		}
-		svgString2Image(item.getSVGForExport(), wd, ht, "png", function (pngData) {
+		svgString2Image(item.getSVGForExport(), wd * 2, ht * 2, "png", function (pngData) {
 			if (index === 0) {
-				first_graph = pngData;
+				big_5_graph = pngData;
 			}
 			if (index === 1) {
-				second_graph = pngData;
+				adapt_qt_graph = pngData;
 			}
 		});
 	});
