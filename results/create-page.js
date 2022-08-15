@@ -50,35 +50,11 @@ var doc = new jsPDF("p", "pt", "letter");
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 let { type, traits, adqt } = params;
-if (!type) {
-	const tv_types = ["commuter", "daytripper", "tourist", "venturer", "voyager"];
-	const num = parseInt(Math.random() * 5);
-	type = tv_types[num];
-	console.log("tv_type:", type);
-}
+if (!type) type = "voyager";
 type = type.toLowerCase();
 let traveler = { ...traveler_types[type] };
-
-if (traits) {
-	traits = traits.split("_").map((a) => parseInt(a));
-} else {
-	traits = [];
-	for (let i = 0; i < 5; i++) {
-		const num = parseInt(Math.random() * 100);
-		traits.push(num);
-	}
-	console.log("traits:", traits);
-}
-if (adqt) {
-	adqt = adqt.split("_").map((a) => parseInt(a));
-} else {
-	adqt = [];
-	for (let i = 0; i < 5; i++) {
-		const num = parseInt(Math.random() * 100);
-		adqt.push(num);
-	}
-	console.log("adqt:", adqt);
-}
+traits = traits.split("_").map((a) => parseInt(a));
+adqt = adqt.split("_").map((a) => parseInt(a));
 marker_url = marker_images[type];
 document.querySelector("#location_image").src = marker_url;
 
@@ -120,7 +96,13 @@ if (window["chart_2"]) {
 	chart_2.destroy();
 }
 
-let my_colors = [openness_clr, agreeableness_clr, emotional_stability, conscientiousness_clr, extraversion_clr];
+let my_colors = [
+	openness_clr,
+	agreeableness_clr,
+	emotional_stability,
+	conscientiousness_clr,
+	extraversion_clr,
+];
 
 let all_traits = ["OPENNESS", "AGREEABLENESS", "EMOTIONAL", "CONSCIENTIOUSNESS", "EXTRAVERSION"];
 
@@ -137,43 +119,15 @@ let adqt_sum = adqt.reduce((a, b) => a + b);
 let qoutient_way = adqt.map((val) => val / 10);
 
 // Make traits data for graph
-// let data_obj = [];
-// for (let i = 0; i < trait_way.length; i++) {
-// 	data_obj.push({
-// 		name: all_traits[i],
-// 		y: trait_way[i],
-// 		color: my_colors[i],
-// 	});
-// }
 
-const make_trait_data = function () {
-	const trait_values = trait_way.map((a, index) => {
-		const val = a * 10;
-		const range = { x: val - 5, x2: val + 5, y: index, pointWidth: 25 };
-		if (val <= 5) {
-			range.x = 0;
-			range.x2 = val + 5;
-		}
-		if (val >= 95) {
-			range.x = val - 5;
-			range.x2 = 100;
-		}
-		return range;
+let data_obj = [];
+for (let i = 0; i < trait_way.length; i++) {
+	data_obj.push({
+		name: all_traits[i],
+		y: trait_way[i],
+		color: my_colors[i],
 	});
-	const trait_base = [];
-	for (let i = 0; i < trait_values.length; i++) {
-		trait_base.push({
-			x: 0,
-			x2: 100,
-			y: i,
-			pointWidth: 5,
-		});
-	}
-
-	// const trait_series = [...trait_base, ...trait_values];
-	const trait_series = [...trait_values];
-	return trait_series;
-};
+}
 
 let data_obj_qoutient = [];
 for (let i = 0; i < qoutient_way.length; i++) {
@@ -183,49 +137,24 @@ for (let i = 0; i < qoutient_way.length; i++) {
 		color: my_colors[i],
 	});
 }
-const data_obj = make_trait_data();
+
 var chart_1 = Highcharts.chart(container, {
-	colors: my_colors,
+	title: {
+		text: "",
+	},
 	chart: {
-		type: "xrange",
-		backgroundColor: "transparent",
+		type: "bar",
+		backgroundColor: null,
 		borderWidth: 0,
 	},
 	credits: {
 		enabled: false,
 	},
-	title: {
-		text: "",
-	},
-	yAxis: {
-		title: {
-			text: "",
-		},
-		categories: ["OPENNESS", "AGREEABLENESS", "EMOTIONAL", "CONSCIENTIOUSNESS", "EXTRAVERSION"],
-		reversed: true,
-		labels: {
-			enabled: false,
-		},
-		gridLineWidth: 0,
-		lineWidth: 0,
-	},
-	xAxis: {
-		gridLineColor: "transparent",
-		gridLineWidth: 0,
-		lineWidth: 0,
-		labels: {
-			enabled: false,
-		},
-		tickLength: 0,
-		max: 70,
-		min: 30,
-	},
-	legend: {
-		enabled: false,
-	},
 	plotOptions: {
 		series: {
-			borderWidth: 0,
+			pointWidth: 20,
+			borderWidth: 1,
+			borderRadius: "3%",
 			events: {
 				legendItemClick: function () {
 					return false;
@@ -233,18 +162,37 @@ var chart_1 = Highcharts.chart(container, {
 			},
 		},
 	},
+	legend: {
+		enabled: false,
+	},
+	yAxis: {
+		title: {
+			text: "",
+		},
+		labels: {
+			enabled: false,
+		},
+		max: 10,
+		gridLineColor: "transparent",
+		gridLineWidth: 0,
+		lineWidth: 0,
+	},
+	xAxis: {
+		type: "category",
+		labels: {
+			enabled: false,
+		},
+		max: 6,
+		lineWidth: 0,
+	},
 	series: [
 		{
-			pointPadding: 0,
-			groupPadding: 0,
+			colorByPoint: true,
+			name: "",
 			data: data_obj,
-			dataLabels: {
-				enabled: false,
-			},
 		},
 	],
 });
-
 var chart_2 = Highcharts.chart(container1, {
 	title: {
 		text: "",
@@ -260,7 +208,7 @@ var chart_2 = Highcharts.chart(container1, {
 	plotOptions: {
 		series: {
 			pointWidth: 20,
-			// borderWidth: 1,
+			borderWidth: 1,
 			borderRadius: "3%",
 			events: {
 				legendItemClick: function () {
