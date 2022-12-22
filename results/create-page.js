@@ -49,35 +49,16 @@ var doc = new jsPDF("p", "pt", "letter");
 
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
-let { type, traits, adqt } = params;
-if (!type) {
-	const tv_types = ["commuter", "daytripper", "tourist", "venturer", "voyager"];
-	const num = parseInt(Math.random() * 5);
-	type = tv_types[num];
-	console.log("tv_type:", type);
-}
-type = type.toLowerCase();
-let traveler = { ...traveler_types[type] };
+let { type, traits, adqt, rid } = params;
 
-if (traits) {
-	traits = traits.split("_").map((a) => parseInt(a));
-} else {
-	traits = [];
-	for (let i = 0; i < 5; i++) {
-		const num = parseInt(Math.random() * 100);
-		traits.push(num);
-	}
-	console.log("traits:", traits);
-}
-if (adqt) {
-	adqt = adqt.split("_").map((a) => parseInt(a));
-} else {
-	adqt = [];
-	for (let i = 0; i < 5; i++) {
-		const num = parseInt(Math.random() * 100);
-		adqt.push(num);
-	}
-	console.log("adqt:", adqt);
+if (!type || !traits || !adqt) {
+	document.querySelector(
+		"body"
+	).innerHTML = `<div style="display: flex; align-items: center; width: 74vw; text-align: center; height: 75vh; margin: auto">
+	<span>
+		Thank you for completing the <i><b>inno</b></i>mapper (beta).<br>Our servers are down at the moment; please <a href="mailto:anjana.dattani@rotman.utoronto.ca?subject=innomapper Report Error: ${rid}">email us</a> to receive a copy of your report, with the following Subject Line: (response ID)
+	</span>
+</div>`;
 }
 marker_url = marker_images[type];
 document.querySelector("#location_image").src = marker_url;
