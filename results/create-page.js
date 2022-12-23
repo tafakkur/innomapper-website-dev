@@ -51,6 +51,7 @@ const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 let { type, traits, adqt, rid } = params;
 
+// Error Handler
 if (!type || !traits || !adqt) {
 	document.querySelector(
 		"body"
@@ -61,8 +62,12 @@ if (!type || !traits || !adqt) {
 </div>`;
 }
 
+// Value Setter
 type = type.toLowerCase();
 let traveler = { ...traveler_types[type] };
+traits = traits.split("_").map((a) => parseInt(a));
+adqt = adqt.split("_").map((a) => parseInt(a));
+
 
 marker_url = marker_images[type];
 document.querySelector("#location_image").src = marker_url;
