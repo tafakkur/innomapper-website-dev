@@ -60,14 +60,13 @@ try {
 	type = type.toLowerCase();
 	traits = traits.split("_").map((a) => parseInt(a));
 	adqt = adqt.split("_").map((a) => parseInt(a));
+	if (traits.length != 5 || adqt.length != 5) {
+		error = true;
+		error_message.push("invalid traits or adqt");
+	}
 } catch (err) {
 	error = true;
 	error_message.push("unable to compute traits or adqt");
-}
-
-if (traits.length != 5 || adqt.length != 5) {
-	error = true;
-	error_message.push("invalid traits or adqt");
 }
 
 if (types.indexOf(type) == -1) {
