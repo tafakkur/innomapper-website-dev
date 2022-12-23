@@ -52,22 +52,42 @@ const params = Object.fromEntries(urlSearchParams.entries());
 let { type, traits, adqt, rid } = params;
 
 // Error Handler
-if (!type || !traits || !adqt) {
+let error = false;
+let error_message = [];
+const types = ["tourist", "voyager", "venturer", "daytripper", "commuter"];
+
+try {
+	type = type.toLowerCase();
+	traits = traits.split("_").map((a) => parseInt(a));
+	adqt = adqt.split("_").map((a) => parseInt(a));
+} catch (err) {
+	error = true;
+	error_message.push("unable to compute traits or adqt");
+}
+
+if (traits.length != 5 || adqt.length != 5) {
+	error = true;
+	error_message.push("invalid traits or adqt");
+}
+
+if (types.indexOf(type) == -1) {
+	error = true;
+	error_message.push("invalid type");
+}
+
+console.log(error_message.join());
+
+if (error) {
 	document.querySelector(
 		"body"
 	).innerHTML = `<div style="display: flex; align-items: center; width: 74vw; text-align: center; height: 75vh; margin: auto">
 	<span>
-		Thank you for completing the <i><b>innomapper (beta)</b></i>.<br>Our servers are down at the moment; please <a href="mailto:anjana.dattani@rotman.utoronto.ca?subject=innomapper Report Error: ${rid}">email us</a> to receive a copy of your report, with the following Subject Line: <b>${rid}</b>
+	Thank you for completing the <i><b>innomapper (beta)</b></i>.<br>Our servers are down at the moment; please <a href="mailto:anjana.dattani@rotman.utoronto.ca?subject=innomapper Report Error: ${rid}">email us</a> to receive a copy of your report, with the following Subject Line: <b>${rid}</b>
 	</span>
-</div>`;
+	</div>`;
 }
 
-// Value Setter
-type = type.toLowerCase();
 let traveler = { ...traveler_types[type] };
-traits = traits.split("_").map((a) => parseInt(a));
-adqt = adqt.split("_").map((a) => parseInt(a));
-
 
 marker_url = marker_images[type];
 document.querySelector("#location_image").src = marker_url;
