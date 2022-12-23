@@ -60,6 +60,10 @@ if (!type || !traits || !adqt) {
 	</span>
 </div>`;
 }
+
+type = type.toLowerCase();
+let traveler = { ...traveler_types[type] };
+
 marker_url = marker_images[type];
 document.querySelector("#location_image").src = marker_url;
 
