@@ -57,7 +57,7 @@ if (!type || !traits || !adqt) {
 		"body"
 	).innerHTML = `<div style="display: flex; align-items: center; width: 74vw; text-align: center; height: 75vh; margin: auto">
 	<span>
-		Thank you for completing the <i><b>inno</b></i>mapper (beta).<br>Our servers are down at the moment; please <a href="mailto:anjana.dattani@rotman.utoronto.ca?subject=innomapper Report Error: ${rid}">email us</a> to receive a copy of your report, with the following Subject Line: <b>${rid}</b>
+		Thank you for completing the <i><b>innomapper (beta)</b></i>.<br>Our servers are down at the moment; please <a href="mailto:anjana.dattani@rotman.utoronto.ca?subject=innomapper Report Error: ${rid}">email us</a> to receive a copy of your report, with the following Subject Line: <b>${rid}</b>
 	</span>
 </div>`;
 }
