@@ -186,9 +186,12 @@ const make_trait_data = function () {
 
 let data_obj_qoutient = [];
 for (let i = 0; i < qoutient_way.length; i++) {
+	let new_value = qoutient_way[i] * 10;
+	new_value = new_value - 20;
+	new_value = new_value / 0.8;
 	data_obj_qoutient.push({
 		name: quotient[i],
-		y: qoutient_way[i],
+		y: new_value,
 		color: my_colors[i],
 	});
 }
@@ -288,7 +291,8 @@ var chart_2 = Highcharts.chart(container1, {
 		labels: {
 			enabled: false,
 		},
-		max: 10,
+		max: 100,
+		// min: 20,
 		gridLineColor: "transparent",
 		gridLineWidth: 0,
 		lineWidth: 0,
@@ -315,6 +319,77 @@ var chart_2 = Highcharts.chart(container1, {
 	],
 });
 
+// Temp Chart 3
+let temp_data = [];
+for (let i = 0; i < qoutient_way.length; i++) {
+	let new_value = qoutient_way[i] * 10;
+	temp_data.push({
+		name: quotient[i],
+		y: new_value,
+		color: my_colors[i],
+	});
+}
+var chart_3 = Highcharts.chart(container, {
+	title: {
+		text: "",
+	},
+	chart: {
+		type: "bar",
+		backgroundColor: null,
+		borderWidth: 0,
+	},
+	credits: {
+		enabled: false,
+	},
+	plotOptions: {
+		series: {
+			pointWidth: 20,
+			// borderWidth: 1,
+			borderRadius: "3%",
+			events: {
+				legendItemClick: function () {
+					return false;
+				},
+			},
+		},
+	},
+	legend: {
+		enabled: false,
+	},
+	yAxis: {
+		title: {
+			text: "",
+		},
+		labels: {
+			enabled: false,
+		},
+		max: 100,
+		// min: 20,
+		gridLineColor: "transparent",
+		gridLineWidth: 0,
+		lineWidth: 0,
+	},
+	xAxis: {
+		type: "category",
+		labels: {
+			enabled: false,
+		},
+		lineWidth: 0,
+		title: {
+			text: "",
+		},
+		max: 6,
+		gridLineColor: "transparent",
+		gridLineWidth: 0,
+	},
+	series: [
+		{
+			name: "1",
+			colorByPoint: true,
+			data: temp_data,
+		},
+	],
+});
 setTimeout(() => {
 	createDataUriFromSvg();
 }, 300);
