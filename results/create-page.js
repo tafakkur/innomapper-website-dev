@@ -292,7 +292,7 @@ var chart_2 = Highcharts.chart(container1, {
 			enabled: false,
 		},
 		max: 100,
-		// min: 20,
+		min: 0,
 		gridLineColor: "transparent",
 		gridLineWidth: 0,
 		lineWidth: 0,
@@ -319,77 +319,6 @@ var chart_2 = Highcharts.chart(container1, {
 	],
 });
 
-// Temp Chart 3
-let temp_data = [];
-for (let i = 0; i < qoutient_way.length; i++) {
-	let new_value = qoutient_way[i] * 10;
-	temp_data.push({
-		name: quotient[i],
-		y: new_value,
-		color: my_colors[i],
-	});
-}
-var chart_3 = Highcharts.chart(container, {
-	title: {
-		text: "",
-	},
-	chart: {
-		type: "bar",
-		backgroundColor: null,
-		borderWidth: 0,
-	},
-	credits: {
-		enabled: false,
-	},
-	plotOptions: {
-		series: {
-			pointWidth: 20,
-			// borderWidth: 1,
-			borderRadius: "3%",
-			events: {
-				legendItemClick: function () {
-					return false;
-				},
-			},
-		},
-	},
-	legend: {
-		enabled: false,
-	},
-	yAxis: {
-		title: {
-			text: "",
-		},
-		labels: {
-			enabled: false,
-		},
-		max: 100,
-		// min: 20,
-		gridLineColor: "transparent",
-		gridLineWidth: 0,
-		lineWidth: 0,
-	},
-	xAxis: {
-		type: "category",
-		labels: {
-			enabled: false,
-		},
-		lineWidth: 0,
-		title: {
-			text: "",
-		},
-		max: 6,
-		gridLineColor: "transparent",
-		gridLineWidth: 0,
-	},
-	series: [
-		{
-			name: "1",
-			colorByPoint: true,
-			data: temp_data,
-		},
-	],
-});
 setTimeout(() => {
 	createDataUriFromSvg();
 }, 300);
