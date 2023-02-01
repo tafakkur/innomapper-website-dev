@@ -1346,7 +1346,7 @@ function makePDFContent() {
 	doc.setFontSize(7);
 	doc.setFontType("normal");
 	doc.setTextColor(footer_copyrights);
-	doc.text(`<65%`, 225 + 5, 440);
+	doc.text(`<60%`, 225 + 5, 440);
 	doc.text(`>80%`, 330 + 5, 440);
 
 	doc.setFontSize(7);
