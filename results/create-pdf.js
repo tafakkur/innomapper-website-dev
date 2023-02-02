@@ -1267,14 +1267,18 @@ function makePDFContent() {
 	);
 
 	//Vertical lines graph
+	const verticalLineHeight = 415;
 	doc.setDrawColor(vertical_graph_line);
 	doc.setLineDash([2, 1]);
 	doc.setLineWidth(0.5);
-	doc.line(183 + 5, 252, 183 + 5, 472); //0%
-	doc.line(218 + 5, 252, 218 + 5, 472); //20%
-	doc.line(252 + 5, 252, 252 + 5, 472); //40%
-	doc.line(287 + 5, 252, 287 + 5, 472); //60%
-	// doc.line(322 + 5, 252, 322 + 5, 472); //80%
+	doc.line(183 + 5, 252, 183 + 5, verticalLineHeight); //0%
+	doc.line(218 + 5, 252, 218 + 5, verticalLineHeight); //20%
+	doc.line(252 + 5, 252, 252 + 5, verticalLineHeight); //40%
+	doc.line(287 + 5, 252, 287 + 5, verticalLineHeight); //60%
+	doc.setLineWidth(1);
+	doc.setDrawColor("#241f21");
+	doc.line(322 + 5, 252, 322 + 5, verticalLineHeight); //80%
+	// doc.line((322 + 357) / 2 + 5, 252, (322 + 357) / 2 + 5, 472); //90%
 	// doc.line(357 + 5, 252, 357 + 5, 472); //100%
 
 	// First Graph
@@ -1322,7 +1326,7 @@ function makePDFContent() {
 	doc.setDrawColor(footer_copyrights);
 	// For Chrome, Edge and Opera
 	let y1 = 284,
-		h1 = 180;
+	h1 = 180;
 	// For Firefox
 	if (navigator.userAgent.indexOf("Firefox") > -1) {
 		y1 = 260;
@@ -1332,29 +1336,31 @@ function makePDFContent() {
 	// doc.addImage(big_5_graph, "PNG", 170, y1, 400, h1, "graph1", "NONE");
 	doc.addImage(adapt_qt_graph, "PNG", 185, y1, 180, h1, "graph2", "NONE");
 
+	doc.setTextColor(footer_copyrights);
 	doc.setDrawColor(footer_copyrights);
-	doc.setFontSize(7);
+	doc.setFontSize(8);
 	doc.setFontType("medium");
-	doc.setFontSize(6.5);
+	doc.setLineHeightFactor(1.5);
 	doc.text(
-		`Identify your areas of greatest and least adaptability. Reflect on how it relates to the way you react to different types of situations.`,
+		`Innovative capacity is strongly correlated with high levels of educational and experimental adaptability and a balance across the other dimensions. The dark line grey line indicates a high level. Reflect on your mapped levels across all dimensions. Do they validate or surprise you? How might you better adapt to unfamiliar, uncertain or ambiguous situations?`,
 		45,
 		428,
 		{
-			maxWidth: 130,
+			maxWidth: 505,
 		}
 	);
-	doc.setFontSize(7);
-	doc.setFontType("medium");
-	doc.text(
-		`Innovativeness is strongly correlated with a balanced score across all adaptability measures and with scores above 80% for experimental and cultural adaptability.`,
-		550,
-		425,
-		{
-			maxWidth: 150,
-			align: "right",
-		}
-	);
+	doc.setLineHeightFactor();
+	// doc.setFontSize(7);
+	// doc.setFontType("medium");
+	// doc.text(
+	// 	`Innovativeness is strongly correlated with a balanced score across all adaptability measures and with scores above 80% for experimental and cultural adaptability.`,
+	// 	550,
+	// 	425,
+	// 	{
+	// 		maxWidth: 150,
+	// 		align: "right",
+	// 	}
+	// );
 
 	doc.setFillColor(primary_clr);
 	doc.rect(35, 472, 542, 3, "F");
