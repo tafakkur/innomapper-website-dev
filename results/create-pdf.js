@@ -557,7 +557,7 @@ function makePDFContent() {
 		doc.setFontSize(6);
 		doc.setTextColor("black");
 		doc.setFontType("normal");
-		doc.text(`© 2017 Dr.A.Beausoleil. All rights reserved.`, 35, 755);
+		doc.text(`v3.0 © 2017-3023 Dr.A.Beausoleil. All rights reserved.`, 35, 755);
 	}
 
 	footer();
@@ -1340,16 +1340,17 @@ function makePDFContent() {
 	doc.setDrawColor(footer_copyrights);
 	doc.setFontSize(8);
 	doc.setFontType("medium");
-	doc.setLineHeightFactor(1.5);
+	// doc.setLineHeightFactor(1.5);
 	doc.text(
 		`Innovative capacity is strongly correlated with high levels of educational and experimental adaptability and a balance across the other dimensions. The dark line grey line indicates a high level. Reflect on your mapped levels across all dimensions. Do they validate or surprise you? How might you better adapt to unfamiliar, uncertain or ambiguous situations?`,
 		45,
 		428,
 		{
 			maxWidth: 505,
+			lineHeightFactor: 1.5,
 		}
 	);
-	doc.setLineHeightFactor();
+	// doc.setLineHeightFactor();
 	// doc.setFontSize(7);
 	// doc.setFontType("medium");
 	// doc.text(
@@ -1507,31 +1508,31 @@ function makePDFContent() {
 	});
 
 	doc.setTextColor(footer_copyrights);
-	doc.setFontSize(7);
+	doc.setFontSize(8);
 	// doc.setFontType("bold");
 	// doc.text(`Score Ranges`, 45, 670);
 	// doc.setFontSize(6.5);
 	doc.setFontType("medium");
 	doc.text(
-		`Your traits represent your default state or your comfort zone that you easily resort to in most situations.`,
+		"Your personality traits represent your default state or how you generally respond in most situations. Innovative capacity is strongly correlated with high levels of openness and emotional stability. Reflect on your mapped results. Do they validate or surprise you?",
 		45,
 		y_pos.last_line,
 		{
-			maxWidth: 230,
+			maxWidth: 505,
 		}
 	);
 
-	doc.setFontSize(7);
-	doc.setFontType("medium");
-	doc.text(
-		`Innovativeness is strongly correlated with high levels of openness and balanced emotional stability and agreeableness.`,
-		550,
-		y_pos.last_line,
-		{
-			maxWidth: 220,
-			align: "right",
-		}
-	);
+	// doc.setFontSize(7);
+	// doc.setFontType("medium");
+	// doc.text(
+	// 	`Innovativeness is strongly correlated with high levels of openness and balanced emotional stability and agreeableness.`,
+	// 	550,
+	// 	y_pos.last_line,
+	// 	{
+	// 		maxWidth: 220,
+	// 		align: "right",
+	// 	}
+	// );
 
 	/* // For Chrome, Edge and Opera
 	let y2 = 531,
