@@ -1333,25 +1333,7 @@ function makePDFContent() {
 	doc.addImage(adapt_qt_graph, "PNG", 185, y1, 180, h1, "graph2", "NONE");
 
 	doc.setDrawColor(footer_copyrights);
-	doc.setLineDash([0.3]);
-	doc.line(182 + 5, 425, 286 + 5, 425);
-	doc.line(325 + 5, 425, 352 + 5, 425);
-	doc.circle(286 + 5, 425, 2);
-	doc.circle(325 + 5, 425, 2);
-
-	doc.setFillColor(footer_copyrights);
-	doc.triangle(187 + 5, 423, 182 + 5, 425, 187 + 5, 427, "DF");
-	doc.triangle(353 + 5, 423, 358 + 5, 425, 353 + 5, 427, "DF");
-
 	doc.setFontSize(7);
-	doc.setFontType("normal");
-	doc.setTextColor(footer_copyrights);
-	doc.text(`<60%`, 225 + 5, 440);
-	doc.text(`>80%`, 330 + 5, 440);
-
-	doc.setFontSize(7);
-	// doc.setFontType("bold");
-	// doc.text(`Score Ranges`, 45, 428);
 	doc.setFontType("medium");
 	doc.setFontSize(6.5);
 	doc.text(
