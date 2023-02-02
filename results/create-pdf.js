@@ -1270,12 +1270,12 @@ function makePDFContent() {
 	doc.setDrawColor(vertical_graph_line);
 	doc.setLineDash([2, 1]);
 	doc.setLineWidth(0.5);
-	doc.line(183 + 5, 252, 183 + 5, 472);
-	doc.line(218 + 5, 252, 218 + 5, 472);
-	doc.line(252 + 5, 252, 252 + 5, 472);
-	doc.line(287 + 5, 252, 287 + 5, 472);
-	doc.line(322 + 5, 252, 322 + 5, 472);
-	doc.line(357 + 5, 252, 357 + 5, 472);
+	doc.line(183 + 5, 252, 183 + 5, 472); //0%
+	doc.line(218 + 5, 252, 218 + 5, 472); //20%
+	doc.line(252 + 5, 252, 252 + 5, 472); //40%
+	doc.line(287 + 5, 252, 287 + 5, 472); //60%
+	// doc.line(322 + 5, 252, 322 + 5, 472); //80%
+	// doc.line(357 + 5, 252, 357 + 5, 472); //100%
 
 	// First Graph
 	doc.setTextColor(traits_heading);
