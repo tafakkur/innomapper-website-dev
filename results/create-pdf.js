@@ -1326,7 +1326,7 @@ function makePDFContent() {
 	doc.setDrawColor(footer_copyrights);
 	// For Chrome, Edge and Opera
 	let y1 = 284,
-	h1 = 180;
+		h1 = 180;
 	// For Firefox
 	if (navigator.userAgent.indexOf("Firefox") > -1) {
 		y1 = 260;
@@ -1422,7 +1422,7 @@ function makePDFContent() {
 		const y_offset = 12;
 		const arrow_texts = [
 			["cautious", "conventional", "curious", "creative"],
-			["anxious", "moody", "secure", "confident"],
+			["sensitive", "nervous", "resilient", "confident"],
 			["competitive", "withdrawn", "cooperative", "optimistic"],
 			["easy-going", "careless", "structured", "organized"],
 			["self-reliant", "reserved", "outgoing", "expressive"],
