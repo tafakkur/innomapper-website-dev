@@ -557,7 +557,8 @@ function makePDFContent() {
 		doc.setFontSize(6);
 		doc.setTextColor("black");
 		doc.setFontType("normal");
-		doc.text(`v3.0 © 2017-3023 Dr.A.Beausoleil. All rights reserved.`, 35, 755);
+		doc.text(`© 2017-3023 Dr.A.Beausoleil. All rights reserved.`, 35, 755);
+		doc.text(`v3.0`, 568, 755);
 	}
 
 	footer();
