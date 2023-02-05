@@ -1272,14 +1272,15 @@ function makePDFContent() {
 	doc.setLineDash([2, 1]);
 	doc.setLineWidth(0.5);
 	doc.line(183 + 5, 252, 183 + 5, verticalLineHeight); //0%
-	doc.line(218 + 5, 252, 218 + 5, verticalLineHeight); //20%
-	doc.line(252 + 5, 252, 252 + 5, verticalLineHeight); //40%
-	doc.line(287 + 5, 252, 287 + 5, verticalLineHeight); //60%
+	// doc.line(218 + 5, 252, 218 + 5, verticalLineHeight); //20%
+	// doc.line(252 + 5, 252, 252 + 5, verticalLineHeight); //40%
+	doc.line(270 + 5, 252, 270 + 5, verticalLineHeight); //50%
+	// doc.line(287 + 5, 252, 287 + 5, verticalLineHeight); //60%
+	doc.line(357 + 5, 252, 357 + 5, verticalLineHeight); //100%
 	doc.setLineWidth(1);
 	doc.setDrawColor("#241f21");
-	doc.line(322 + 5, 252, 322 + 5, verticalLineHeight); //80%
-	// doc.line((322 + 357) / 2 + 5, 252, (322 + 357) / 2 + 5, 472); //90%
-	// doc.line(357 + 5, 252, 357 + 5, 472); //100%
+	// doc.line(322 + 5, 252, 322 + 5, verticalLineHeight); //80%
+	doc.line(334 + 5, 252, 334 + 5, verticalLineHeight); //90%
 
 	// First Graph
 	doc.setTextColor(traits_heading);
