@@ -557,7 +557,7 @@ function makePDFContent() {
 		doc.setFontSize(6);
 		doc.setTextColor("black");
 		doc.setFontType("normal");
-		doc.text(`© 2017-3023 Dr.A.Beausoleil. All rights reserved.`, 35, 755);
+		doc.text(`© 2017-2023 Dr.A.Beausoleil. All rights reserved.`, 35, 755);
 		doc.text(`v3.0`, 568, 755);
 	}
 
@@ -1269,19 +1269,31 @@ function makePDFContent() {
 
 	//Vertical lines graph
 	const verticalLineHeight = 415;
+	const graphStart = 188;
+	const graphEnd = 362;
+	const graphPercent = (graphEnd - graphStart) / 100;
+
+	const verticalLinePositions = [0, 15, 30, 45, 60, 75, 100];
+
 	doc.setDrawColor(vertical_graph_line);
 	doc.setLineDash([2, 1]);
 	doc.setLineWidth(0.5);
-	doc.line(183 + 5, 252, 183 + 5, verticalLineHeight); //0%
+
+	verticalLinePositions.forEach((item) => {
+		const thisPosition = graphStart + graphPercent * item;
+		doc.line(thisPosition, 252, thisPosition, verticalLineHeight);
+	});
+
+	// doc.line(183 + 5, 252, 183 + 5, verticalLineHeight); //0%
 	// doc.line(218 + 5, 252, 218 + 5, verticalLineHeight); //20%
 	// doc.line(252 + 5, 252, 252 + 5, verticalLineHeight); //40%
-	doc.line(270 + 5, 252, 270 + 5, verticalLineHeight); //50%
+	// doc.line(270 + 5, 252, 270 + 5, verticalLineHeight); //50%
 	// doc.line(287 + 5, 252, 287 + 5, verticalLineHeight); //60%
-	doc.line(357 + 5, 252, 357 + 5, verticalLineHeight); //100%
+	// doc.line(357 + 5, 252, 357 + 5, verticalLineHeight); //100%
 	doc.setLineWidth(1);
-	doc.setDrawColor("#241f21");
+	doc.setDrawColor("#6b6c6c");
 	// doc.line(322 + 5, 252, 322 + 5, verticalLineHeight); //80%
-	doc.line(334 + 5, 252, 334 + 5, verticalLineHeight); //90%
+	doc.line(graphStart + graphPercent * 90, 252, graphStart + graphPercent * 90, verticalLineHeight); //90%
 
 	// First Graph
 	doc.setTextColor(traits_heading);
